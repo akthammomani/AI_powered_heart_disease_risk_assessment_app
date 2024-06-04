@@ -1,4 +1,4 @@
-# AI-Powered Health Risk Assessment App
+![app_logo](https://github.com/akthammomani/AI_powered_health_risk_assessment_app/assets/67468718/9cda6bc4-996e-48dd-b66e-c559dd53c220)
 
 ## **Introduction**:
 
