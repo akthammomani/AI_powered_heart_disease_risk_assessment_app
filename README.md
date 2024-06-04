@@ -1,5 +1,14 @@
 ![app_logo_v1](https://github.com/akthammomani/AI_powered_health_risk_assessment_app/assets/67468718/85a3c50b-710c-40a4-8085-9aa19715a039)
 
+<div style="background-color: #0D1117; padding: 20px; border-radius: 10px;">
+  <span style="background-color: #ffffff; padding: 10px 20px; border-radius: 5px; display: inline-block; font-size: 20px;">
+    <span style="background-color: #0366d6; color: white; padding: 5px 10px; border-radius: 3px;">AI</span>
+    Powered Health Assessment App
+  </span>
+</div>
+
+
+
 ## **Introduction**:
 
 The AI-Powered Health Risk Assessment App is a comprehensive tool designed to empower individuals with personalized insights into their well-being. As a 4-in-1 platform for health risk assessment, the app evaluates key health indicators across four critical areas:
