@@ -6,7 +6,7 @@ The AI-Powered Health Risk Assessment App is a comprehensive tool designed to em
 * Diabetes risk.
 * Heart disease risk.
 * Cancer risk.
-* Mntal health risk.
+* Mental health risk.
 providing a thorough analysis of users' health status.
 
 ## **Objectives**: 
