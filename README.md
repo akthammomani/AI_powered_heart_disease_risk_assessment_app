@@ -1,4 +1,4 @@
-![app_logo](https://github.com/akthammomani/AI_powered_health_risk_assessment_app/assets/67468718/9cda6bc4-996e-48dd-b66e-c559dd53c220)
+![app_logo_v1](https://github.com/akthammomani/AI_powered_health_risk_assessment_app/assets/67468718/85a3c50b-710c-40a4-8085-9aa19715a039)
 
 ## **Introduction**:
 
