@@ -13,16 +13,16 @@ providing a thorough analysis of users' health status.
 
 The AI-Powered Health Risk Assessment App aims to provide users with tailored risk scores and actionable recommendations, helping them take proactive steps toward a healthier life. Through easy-to-understand assessments and preventive measures, all powered by advanced AI and modeling techniques, the app makes safeguarding your health accessible and straightforward.
 
-## **Features**
+## **Features:**
 
 * **Personalized Risk Assessment**: Evaluates individual risk factors for diabetes, heart disease, cancer, and mental health.
 * **Advanced AI Modeling**: Utilizes sophisticated AI algorithms to analyze health data and provide accurate risk assessments.
 * **Actionable Recommendations**: Offers clear and practical advice based on assessment results.
 *  **User-Friendly Interface**: Easy-to-use interface for inputting health data and viewing assessment results.
 
-## **How It Works**
+## **How It Works:**
 
-* **User Input**: Users input their health information, including age, BMI, physical activity levels, diet, blood pressure, cholesterol levels, smoking status, family history of diseases, etc.
+* **User Input**: Users input their health information, such as: age, BMI, physical activity levels, diet, blood pressure, cholesterol levels, smoking status, family history of diseases, etc.
 * **Data Analysis**: The app analyzes the input data using advanced AI models.
 * **Risk Assessment**: Provides a personalized risk score for each health condition.
 * **Recommendations**: Offers actionable recommendations to mitigate health risks.
