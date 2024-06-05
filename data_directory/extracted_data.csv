@@ -1,0 +1,325 @@
+SAS Variable Name,Label
+_STATE,State FIPS Code
+FMONTH,File Month
+IDATE,Interview Date
+IMONTH,Interview Month
+IDAY,Interview Day
+IYEAR,Interview Year
+DISPCODE,Final Disposition
+SEQNO,Annual Sequence Number
+_PSU,Primary Sampling Unit
+CTELENM1,Correct telephone number?
+PVTRESD1,Private Residence?
+COLGHOUS,Do you live in college housing?
+STATERE1,Resident of State
+CELPHON1,Cellular Telephone
+LADULT1,Are you 18 years of age or older?
+COLGSEX1,Are you male or female?
+NUMADULT,Number of Adults in Household
+LANDSEX1,Are you male or female?
+NUMMEN,Number of Adult men in Household
+NUMWOMEN,Number of Adult women in Household
+RESPSLCT,Respondent selection
+SAFETIME,Safe time to talk
+CTELNUM1,Correct Phone Number?
+CELLFON5,Is this a cell phone?
+CADULT1,Are you 18 years of age or older?
+CELLSEX1,Are you male or female?
+PVTRESD3,Do you live in a private residence?
+CCLGHOUS,Do you live in college housing?
+CSTATE1,Do you currently live in  ____(state)____?
+LANDLINE,Do you also have a landline telephone?
+HHADULT,Number of Adults in Household
+SEXVAR,Sex of Respondent
+GENHLTH,General Health
+PHYSHLTH,Number of Days Physical Health Not Good
+MENTHLTH,Number of Days Mental Health Not Good
+POORHLTH,Poor Physical or Mental Health
+PRIMINSR,What is Primary Source of Health Insurance?
+PERSDOC3,Have Personal Health Care Provider?
+MEDCOST1,Could Not Afford To See Doctor
+CHECKUP1,Length of time since last routine checkup
+EXERANY2,Exercise in Past 30 Days
+SLEPTIM1,How Much Time Do You Sleep
+LASTDEN4,Last Visited Dentist or Dental Clinic
+RMVTETH4,Number of Permanent Teeth Removed
+CVDINFR4,Ever Diagnosed with Heart Attack
+CVDCRHD4,Ever Diagnosed with Angina or Coronary Heart Disease
+CVDSTRK3,Ever Diagnosed with a Stroke
+ASTHMA3,Ever Told Had Asthma
+ASTHNOW,Still Have Asthma
+CHCSCNC1,(Ever told) (you had) skin cancer that is not melanoma?
+CHCOCNC1,(Ever told) (you had)  melanoma or any other types of cancer?
+CHCCOPD3,Ever told you had C.O.P.D. emphysema or chronic bronchitis?
+ADDEPEV3,(Ever told) you had a depressive disorder
+CHCKDNY2,Ever told you have kidney disease?
+HAVARTH4,Told Had Arthritis
+DIABETE4,(Ever told) you had diabetes
+MARITAL,Marital Status
+EDUCA,Education Level
+RENTHOM1,Own or Rent Home
+NUMHHOL4,Household Landline Telephones
+VETERAN3,Are You A Veteran
+EMPLOY1,Employment Status
+CHILDREN,Number of Children in Household
+INCOME3,Income Level
+PREGNANT,Pregnancy Status
+WEIGHT2,Reported Weight in Pounds
+HEIGHT3,Reported Height in Feet and Inches
+DEAF,Are you deaf or do you have serious difficulty hearing?
+BLIND,Blind or Difficulty seeing
+DECIDE,Difficulty Concentrating or Remembering
+DIFFWALK,Difficulty Walking or Climbing Stairs
+DIFFDRES,Difficulty Dressing or Bathing
+DIFFALON,Difficulty Doing Errands Alone
+HADMAM,Have You Ever Had a Mammogram
+HOWLONG,How Long since Last Mammogram
+CERVSCRN,Have you ever had a cervical cancer screening test?
+CRVCLCNC,Time since last cervical cancer screening test
+CRVCLPAP,Have a PAP test and recent cervical cancer screening
+CRVCLHPV,Have an H.P.V. test and recent cervical cancer screening
+HADHYST2,Had Hysterectomy
+HADSIGM4,Ever Had Sigmoidoscopy/Colonoscopy
+COLNSIGM,"Ever had a colonoscopy, sigmoidoscopy, or both"
+COLNTES1,How long since you had colonoscopy
+SIGMTES1,How long since you had sigmoidoscopy
+LASTSIG4,Time Since Last Sigmoidoscopy/Colonoscopy
+COLNCNCR,Ever had any other kind of test for colorectal cancer
+VIRCOLO1,Ever had a virtual colonoscopy
+VCLNTES2,How long since you had  virtual colonoscopy
+SMALSTOL,Ever had stool test?
+STOLTEST,How long since you had stool test?
+STOOLDN2,Ever had stool DNA test?
+BLDSTFIT,Was test part of Cologuard test?
+SDNATES1,How long since you had stool DNA
+SMOKE100,Smoked at Least 100 Cigarettes
+SMOKDAY2,Frequency of Days Now Smoking
+USENOW3,Use of Smokeless Tobacco Products
+ECIGNOW2,"Do you now use e-cigarettes, or vaping products every day, some days, or not at all?"
+LCSFIRST,How old when you first started smoking?
+LCSLAST,How old when you last smoked?
+LCSNUMCG,"On average, how many cigarettes do you smoke each day?"
+LCSCTSC1,Did you have a CT or CAT scan?
+LCSSCNCR,Were any CT or CAT scans done to check for lung cancer?
+LCSCTWHN,When did you have your most recent CT or CAT scan?
+ALCDAY4,Days in past 30 had alcoholic beverage
+AVEDRNK3,Avg alcoholic drinks per day in past 30
+DRNK3GE5,Binge Drinking
+MAXDRNKS,Most drinks on single occasion past 30 days
+FLUSHOT7,Adult flu shot/spray past 12 mos
+FLSHTMY3,When did you receive your most recent seasonal flu shot/spray?
+PNEUVAC4,Pneumonia shot ever
+TETANUS1,Received Tetanus Shot Since 2005?
+HIVTST7,Ever tested H.I.V.
+HIVTSTD3,Month and Year of Last HIV Test
+HIVRISK5,Do Any High Risk Situations Apply
+COVIDPOS,Have you ever been told you tested positive for COVID 19?
+COVIDSMP,Have an 3 month or longer covid symptoms?
+COVIDPRM,Which was the primary symptom that you experienced?
+PDIABTS1,When was your last blood test for high blood sugar?
+PREDIAB2,Ever been told by a doctor or other health professional that you have pre-diabetes or borderline diabetes?
+DIABTYPE,What type of diabetes do you have?
+INSULIN1,Now Taking Insulin
+CHKHEMO3,Times Checked for Glycosylated Hemoglobin
+EYEEXAM1,Last Eye Exam Where Pupils Were Dilated
+DIABEYE1,When was the last time a they took a photo of the back of your eye?
+DIABEDU1,When was the last time you took a course or class in how to manage your diabetes?
+FEETSORE,Ever Had Feet Sores or Irritations Lasting More Than Four Weeks
+TOLDCFS,Told had Chronic Fatigue Syndrome (CFS) or (Myalgic Encephalomyelitis) ME
+HAVECFS,Still have Chronic Fatigue Syndrome or Myalgic Encephalomyelitis
+WORKCFS,How many hours a week are you been able to work
+IMFVPLA3,Where did you get your last flu shot/vaccine?
+HPVADVC4,Have you ever had an H.P.V. vaccination?
+HPVADSHT,How many HPV shots did you receive?
+SHINGLE2,Have you ever had the shingles or zoster vaccine?
+COVIDVA1,Received at least one COVID-19 vaccination
+COVACGET,Will you get COVID-19 vaccination?
+COVIDNU1,Number of COVID-19 vaccinations received
+COVIDINT,Intend to get COVID-19 vaccination
+COVIDFS1,Month/Year of first COVID-19 vaccination
+COVIDSE1,Month/Year of second COVID-19 vaccination
+COPDCOGH,Did you have a cough?
+COPDFLEM,Did you cough up phlegm?
+COPDBRTH,Did you have shortness of breath?
+COPDBTST,Have you ever been given a breathing test?
+COPDSMOK,How many years have you smoked tobacco products?
+CNCRDIFF,How Many Types of Cancer?
+CNCRAGE,Age Told Had Cancer
+CNCRTYP2,Type of Cancer
+CSRVTRT3,Currently Receiving Treatment for Cancer
+CSRVDOC1,What Type of Doctor Provides Majority of Your Care
+CSRVSUM,Did You Receive a Summary of Cancer Treatments Received
+CSRVRTRN,Ever Receive Instructions From A Doctor For Follow-Up Check-Ups
+CSRVINST,Instructions Written or Printed
+CSRVINSR,Did Health Insurance Pay For All Of Your Cancer Treatment
+CSRVDEIN,Ever Denied Insurance Coverage Because Of Your Cancer?
+CSRVCLIN,Participate In Clinical Trial As Part Of Cancer Treatment?
+CSRVPAIN,Currently Have Physical Pain From Cancer Or Treatment?
+CSRVCTL2,Is Pain Under Control?
+PSATEST1,Ever Had PSA Test
+PSATIME1,Time Since Most Recent PSA Test
+PCPSARS2,What was the MAIN reason you had this PSA test?
+PSASUGST,Who first suggested this PSA test?
+PCSTALK1,Did you talk about the advantages or disadvantages of P.S.A. test
+CIMEMLOS,Have you experienced confusion or memory loss that is happening more often or is getting worse?
+CDHOUSE,Given up day-to-day chores due to confusion or memory loss
+CDASSIST,Need assistance with day-to_day activities due to confusion or memory loss
+CDHELP,When you need help with day-to-day activities are you able to get it
+CDSOCIAL,Does confusion or memory loss interfere with work or social activities
+CDDISCUS,Have you discussed your confusion or memory loss with a health care professional?
+CAREGIV1,Provided regular care for family or friend
+CRGVREL4,Relationship Of Person To Whom You Are Giving Care?
+CRGVLNG1,How Long Provided Care For Person.
+CRGVHRS1,How Many Hours Do You Provide Care For Person?
+CRGVPRB3,"What Is The Major Health Problem, Illness, Disability For Care For Person?"
+CRGVALZD,Does Person Being Cared For Have Alzheimer´s Disease?
+CRGVPER1,Managed personal care
+CRGVHOU1,Managed household tasks
+CRGVEXPT,Do you expect to have a relative you will need to provide care for?
+ACEDEPRS,"Live With Anyone Depressed, Mentally Ill, Or Suicidal?"
+ACEDRINK,Live With a Problem Drinker/Alcoholic?
+ACEDRUGS,Live With Anyone Who Used Illegal Drugs or Abused Prescriptions?
+ACEPRISN,Live With Anyone Who Served TIme in Prison or Jail?
+ACEDIVRC,Were Your Parents Divorced/Seperated?
+ACEPUNCH,How Often Did Your Parents Beat Each Other Up?
+ACEHURT1,How Often Did A Parent Physically Hurt You In Any Way?
+ACESWEAR,How Often Did A Parent Swear At You?
+ACETOUCH,How Often Did Anyone Ever Touch You Sexually?
+ACETTHEM,How Often Did Anyone Make You Touch Them Sexually?
+ACEHVSEX,How Often Did Anyone Ever Force You to Have Sex?
+ACEADSAF,Did an adult make you feel safe and protected
+ACEADNED,Did an adult make sure basic needs were met
+LSATISFY,Satisfaction with life
+EMTSUPRT,How often get emotional support needed
+SDHISOLT,How often do you feel socially isolated from others?
+SDHEMPLY,Have you lost employment or had hours reduced?
+FOODSTMP,During the past 12 months have you received food stamps
+SDHFOOD1,"How often did the food that you bought not last, and you didn’t have money to get more?"
+SDHBILLS,Were you not able to pay your bills?
+SDHUTILS,Were you not able to pay utility bills or threatened to lose service?
+SDHTRNSP,"Has a lack of reliable transportation kept you from appointments, meetings, work, or getting things needed"
+SDHSTRE1,How often have you felt this kind of stress?
+MARIJAN1,"During the past 30 days, on how many days did you use marijuana or hashish?"
+MARJSMOK,Did you smoke marijuana or cannabis?
+MARJEAT,Did you eat marijuana or cannabis?
+MARJVAPE,Did you vape marijuana or cannabis?
+MARJDAB,Did you dab marijuana or cannabis?
+MARJOTHR,Did you use marijuana or cannabis some other way?
+LASTSMK2,Interval Since Last Smoked
+STOPSMK2,Stopped Smoking in past 12 months
+MENTCIGS,Do you usually smoke menthol cigarettes?
+MENTECIG,Do you usually use menthol e-cigarettes?
+HEATTBCO,Have you heard of heated tobacco products?
+ASBIALCH,Asked during checkup if you drink alchohol
+ASBIDRNK,Asked in person or by form how much you drink?
+ASBIBING,Asked whether you drank [5 FOR MEN /4 FOR WOMEN] or more alcoholic drinks on an occasion?
+ASBIADVC,Offered advice about what level of drinking is harmful or risky?
+ASBIRDUC,Were you advised to reduce or quit your drinking?
+FIREARM5,Any Firearms in Home
+GUNLOAD,Any Firearms Loaded
+LOADULK2,Any Loaded Firearms Also Unlocked
+RCSGEND1,Gender of child
+RCSXBRTH,Child´s sex at birth
+RCSRLTN2,Relationship to child
+CASTHDX2,Hlth pro ever said child has asthma
+CASTHNO2,Child still have asthma?
+BIRTHSEX,Are you male or female?
+SOMALE,Sexual orientation
+SOFEMALE,Sexual orientation
+TRNSGNDR,Do you consider yourself to be transgender?
+HADSEX,Have you have sexual intercourse?
+PFPPRVN4,Did you do anything to keep from getting pregnant?
+TYPCNTR9,What did you do to keep you from getting pregnant?
+BRTHCNT4,Are You Doing Anything to Keep From Getting Pregnant?
+WHEREGET,Where did you get what you used to prevent pregnancy?
+NOBCUSE8,What was main reason for not doing anything to keep you from getting pregnant?
+BCPREFER,What is your preferred birth control method?
+RRCLASS3,How do other people usually classify you in this country?
+RRCOGNT2,How often do you think about your race?
+RRTREAT,"Were you treated worse than, the same, or better than people of other races?"
+RRATWRK2,How do you feel you were treated at work compared to people of other races in past 12 months?
+RRHCARE4,"When seeking health care past 12 months, was experience worse, same, better than people of other races?"
+RRPHYSM2,Times past 30 days felt physical symptoms because of treatment due to your race
+QSTVER,Questionnaire Version Identifier
+QSTLANG,Language identifier
+_METSTAT,Metropolitan Status
+_URBSTAT,Urban/Rural Status
+MSCODE,Metropolitan Status Code
+_STSTR,Sample Design Stratification Variable
+_STRWT,Stratum weight
+_RAWRAKE,Raw weighting factor used in raking
+_WT2RAKE,Design weight use in raking
+_IMPRACE,Imputed race/ethnicity value
+_CHISPNC,"Child Hispanic, Latino/a, or Spanish origin calculated variable"
+_CRACE2,Child Non-Hispanic Race including Multiracial
+_CPRACE2,Preferred Child Race Categories
+CAGEG,Four level child age
+_CLLCPWT,Final child weight: Land-line and Cell-Phone data
+_DUALUSE,Dual Phone Use Categories
+_DUALCOR,Dual Phone Use Correction Factor
+_LLCPWT2,Truncated design weight used in adult combined land line and cell phone raking
+_LLCPWT,Final weight: Land-line and cell-phone data
+_RFHLTH,Adults with good or better health
+_PHYS14D,Computed Physical Health Status
+_MENT14D,Computed Mental Health Status
+_HLTHPLN,Have any health insurance
+_HCVU652,Respondents aged 18-64 with health insurance
+_TOTINDA,Leisure Time Physical Activity Calculated Variable
+_EXTETH3,Adults aged 18+ that have had permanent teeth extracted
+_ALTETH3,Adults aged 65+ who have had all their natural teeth extracted
+_DENVST3,"Adults that have visited a dentist, dental hygenist or dental clinic within the past year"
+_MICHD,Ever had CHD or MI
+_LTASTH1,Lifetime Asthma Calculated Variable
+_CASTHM1,Current Asthma Calculated Variable
+_ASTHMS1,Computed Asthma Status
+_DRDXAR2,Respondents diagnosed with arthritis
+_PRACE2,Computed Preferred Race
+_MRACE2,Calculated non-Hispanic Race including multiracial
+_HISPANC,"Hispanic, Latino/a, or Spanish origin calculated variable"
+_RACE1,Computed Race-Ethnicity grouping
+_RACEG22,Create Computed Non-Hispanic Whites/All Others Race Categories Race/Ethnic Group Codes Used In Post-Stratification Variable
+_RACEGR4,Computed Five level race/ethnicity category.
+_RACEPR1,Computed race groups used for internet prevalence tables
+_SEX,Calculated sex variable
+_AGEG5YR,Reported age in five-year age categories calculated variable
+_AGE65YR,Reported age in two age groups calculated variable
+_AGE80,Imputed Age value collapsed above 80
+_AGE_G,Imputed age in six groups
+HTIN4,Computed Height in Inches
+HTM4,Computed Height in Meters
+WTKG3,Computed Weight in Kilograms
+_BMI5,Computed body mass index
+_BMI5CAT,Computed body mass index categories
+_RFBMI5,Overweight or obese calculated variable
+_CHLDCNT,Computed number of children in household
+_EDUCAG,Computed level of education completed categories
+_INCOMG1,Computed income categories
+_RFMAM22,Women respondents aged 40+ who have had a mammogram in the past two years
+_MAM5023,Women respondents aged 50-74 that have had a mammogram in the past two years
+_HADCOLN,Had colonoscopy calculated variable
+_CLNSCP1,Respondents aged 45-75 who have had a colonoscopy within the past ten years
+_HADSIGM,Had sigmoidoscopy calculated variable
+_SGMSCP1,Respondents aged 45-75 who have had a sigmoidoscopy within the past five years
+_SGMS101,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years
+_RFBLDS5,Respondents aged 45-75 who have had a stool test within the past year
+_STOLDN1,Respondents aged 45-75 who have had a stool DNA test within the past three years
+_VIRCOL1,Respondents aged 45-75 who have had a virtual colonoscopy within the past five years
+_SBONTI1,Respondents aged 45-75 who have had a sigmoidoscopy within the past ten years and a blood stool test in the past year
+_CRCREC2,Respondents aged 45-75 who have fully met the USPSTF recommendations
+_SMOKER3,Computed Smoking Status
+_RFSMOK3,Current Smoking Calculated Variable
+_CURECI2,Current E-cigarette User Calculated Variable
+_YRSSMOK,Number of years smoked cigarettes
+_PACKDAY,Number of packs of cigarettes smoked per day
+_PACKYRS,Years smoked reported packs per day
+_YRSQUIT,Number of years since quit smoking cigarettes
+_SMOKGRP,Smoking Group
+_LCSREC,Lung cancer screening recommendation status
+DRNKANY6,Drink any alcoholic beverages in past 30 days
+DROCDY4_,Computed drink-occasions-per-day
+_RFBING6,Binge Drinking Calculated Variable
+_DRNKWK2,Computed number of drinks of alcohol beverages per week
+_RFDRHV8,Heavy Alcohol Consumption  Calculated Variable
+_FLSHOT7,Flu Shot Calculated Variable
+_PNEUMO3,Pneumonia Vaccination Calculated Variable
+_AIDTST4,Ever been tested for HIV calculated variable
