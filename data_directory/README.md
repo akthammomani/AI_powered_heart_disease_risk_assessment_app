@@ -14,6 +14,11 @@ To ensure we fully understand what each column in the dataset represents, it is 
 * **Save the Enhanced Dataset:** The dataset with descriptive column names is saved for subsequent analysis, ensuring that all users can easily interpret the columns.
 
 ```python
+#Let's import the necessary packages:
+import pandas as pd
+import numpy as np
+from bs4 import BeautifulSoup
+
 # Path to the HTML file:
 file_path = 'USCODE22_LLCP_102523.HTML'
 
