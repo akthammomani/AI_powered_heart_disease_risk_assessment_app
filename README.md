@@ -1,4 +1,4 @@
-# AI-Power Health Risk Assessment App
+# AI-Powered Health Risk Assessment App
 
 ## **Introduction**:
 
