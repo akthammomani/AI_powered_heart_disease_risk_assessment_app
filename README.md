@@ -1,31 +1,34 @@
-# AI-Powered Health Risk Assessment App
+# AI-Powered Heart Disease Risk Assessment App
 
 ## **Introduction**:
 
-The AI-Powered Health Risk Assessment App is a comprehensive tool designed to empower individuals with personalized insights into their well-being. As a 4-in-1 platform for health risk assessment, the app evaluates key health indicators across four critical areas:
-* Diabetes risk.
-* Heart disease risk.
-* Cancer risk.
-* Mental health risk.
-providing a thorough analysis of users' health status.
+The AI-Powered Heart Disease Risk Assessment App is a comprehensive tool designed to empower individuals with personalized insights into their cardiovascular health. While the app can evaluate multiple health indicators, it primarily focuses on predicting the risk of heart disease. This includes key factors such as:
+* Age
+* Gender
+* BMI
+* Physical activity levels
+* Smoking status
+* Medical history (e.g., previous heart attacks, strokes, diabetes)
+
+By providing a thorough analysis of users' heart health status, the app aims to help users understand their risk and take proactive steps to maintain a healthy heart.
 
 ## **Objectives**: 
 
-The AI-Powered Health Risk Assessment App aims to provide users with tailored risk scores and actionable recommendations, helping them take proactive steps toward a healthier life. Through easy-to-understand assessments and preventive measures, all powered by advanced AI and modeling techniques, the app makes safeguarding your health accessible and straightforward.
+The AI-Powered Heart Disease Risk Assessment App aims to provide users with tailored risk scores and actionable recommendations to help them mitigate their risk of heart disease. Through easy-to-understand assessments and preventive measures, all powered by advanced AI and modeling techniques, the app makes safeguarding your cardiovascular health accessible and straightforward.
 
 ## **Features:**
 
-* **Personalized Risk Assessment**: Evaluates individual risk factors for diabetes, heart disease, cancer, and mental health.
-* **Advanced AI Modeling**: Utilizes sophisticated AI algorithms to analyze health data and provide accurate risk assessments.
-* **Actionable Recommendations**: Offers clear and practical advice based on assessment results.
-*  **User-Friendly Interface**: Easy-to-use interface for inputting health data and viewing assessment results.
+* **Personalized Heart Disease Risk Assessment**: Evaluates individual risk factors specifically for heart disease.
+* **Advanced AI Modeling**: Utilizes sophisticated AI algorithms to analyze health data and provide accurate heart disease risk assessments.
+* **Actionable Recommendations**: Offers clear and practical advice based on assessment results, such as lifestyle changes and medical follow-ups.
+* **User-Friendly Interface**: Easy-to-use interface for inputting health data and viewing heart disease risk assessment results.
 
 ## **How It Works:**
 
-* **User Input**: Users input their health information, such as: age, BMI, physical activity levels, diet, smoking status, etc.
-* **Data Analysis**: The app analyzes the input data using advanced AI models.
-* **Risk Assessment**: Provides a personalized risk score for each health condition.
-* **Recommendations**: Offers actionable recommendations to mitigate health risks.
+* **User Input**: Users input their health information, such as age, BMI, physical activity levels, smoking status, medical history (e.g., previous heart attacks, strokes, diabetes), etc.
+* **Data Analysis**: The app analyzes the input data using advanced AI models tailored for heart disease risk prediction.
+* **Risk Assessment**: Provides a personalized risk score for heart disease.
+* **Recommendations**: Offers actionable recommendations to mitigate the risk of heart disease, including lifestyle modifications and medical advice.
 
 ## **Dataset:**
 
