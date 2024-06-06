@@ -22,7 +22,7 @@ The AI-Powered Health Risk Assessment App aims to provide users with tailored ri
 
 ## **How It Works:**
 
-* **User Input**: Users input their health information, such as: age, BMI, physical activity levels, diet, blood pressure, cholesterol levels, smoking status, family history of diseases, etc.
+* **User Input**: Users input their health information, such as: age, BMI, physical activity levels, diet, smoking status, etc.
 * **Data Analysis**: The app analyzes the input data using advanced AI models.
 * **Risk Assessment**: Provides a personalized risk score for each health condition.
 * **Recommendations**: Offers actionable recommendations to mitigate health risks.
