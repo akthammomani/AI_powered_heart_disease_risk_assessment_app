@@ -1,4 +1,4 @@
-# Data Wrangling
+# Data Wrangling: AI-Powered Heart Disease Risk Assessment
 
 ![data_wrangling](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/3d94f886-b57a-46e0-aa55-65c036add226)
 
