@@ -35,8 +35,4 @@ This notebook is dedicated to the crucial task of data wrangling, a foundational
 
 This notebook ensures that the dataset is clean, consistent, and ready for subsequent analysis and machine learning tasks. By systematically applying the steps outlined above, we enhance the dataset's quality, making it more suitable for building reliable and robust predictive models.
 
----
-
-This README provides a comprehensive overview of the data wrangling process carried out in the notebook, highlighting the essential steps taken to ensure data quality and readiness for analysis.
-``` &#8203;:citation[oaicite:0]{index=0}&#8203;
 
