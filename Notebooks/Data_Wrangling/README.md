@@ -1,5 +1,7 @@
 # Data Wrangling
 
+![data_wrangling](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/3d94f886-b57a-46e0-aa55-65c036add226)
+
 ## Introduction
 
 This notebook is dedicated to the crucial task of data wrangling, a foundational step in preparing our dataset for analysis and modeling. Data wrangling involves transforming and mapping raw data into a format suitable for analysis, ensuring data quality, consistency, and usability. The steps taken in this notebook include:
