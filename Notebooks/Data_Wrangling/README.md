@@ -1,4 +1,4 @@
-# Data Wrangling Notebook
+# Data Wrangling
 
 ## Introduction
 
