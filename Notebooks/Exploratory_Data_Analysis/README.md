@@ -13,5 +13,5 @@ In this notebook, we will:
 * Convert Categorical Data: Transform categorical features into numeric format using CatBoost encoding for better analysis and modeling.
 * Analyze Correlations: Examine both linear and non-linear relationships between features and the target variable (heart disease) using Pearson correlation and mutual information.
 * Feature Selection: Identify and select key features that have the most predictive power for heart disease.
-* 
+  
 These steps will help us understand the data better, reveal important relationships, and prepare the data for building robust predictive models.
