@@ -125,6 +125,36 @@ The `BalancedRandomForestClassifier` from the `imbalanced-ensemble` library effe
 * The "Excellent" health category has the fewest individuals with heart disease `1.0K`.
 * There is a noticeable distribution of heart disease cases across different general health categories, with the highest incidence in individuals who self-report as having "Good" or "Fair" health.
 
+### **Heart Disease vs Health Care Provider**
+
+![health_care_provider](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/ae7f9ae8-58f4-42a8-a83a-bbaa5c8899b4)
+
+**Distribution Analysis**
+
+* The highest number of individuals with heart disease is in the "More Than One" health care provider category `13.5K`.
+* The "Yes, Only One" category also has a significant number of individuals with heart disease `12.2K`.
+* The "No" health care provider category has the fewest individuals with heart disease `1.1K`.
+* This distribution suggests that individuals with multiple health care providers or at least one provider are more likely to have heart disease compared to those with no health care provider.
+
+### **Heart Disease vs Doctor availability**
+
+![see_doctor](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/9f2fe2b2-4987-47a3-8cf6-837eb91d6ec1)
+
+**Distribution Analysis**
+
+* The majority of individuals with heart disease fall into the category of those who could afford to see a doctor `24.5K`.
+* A smaller number of individuals with heart disease could not afford to see a doctor `2.3K`.
+* This distribution indicates that even among those with heart disease, most individuals could afford to see a doctor, suggesting access to healthcare does not completely mitigate the risk of heart disease.
+* However, the presence of heart disease in individuals who could not afford to see a doctor highlights a potential issue with access to preventive care or treatment.
+
+
+
+
+
+
+
+
+
 
 
 
