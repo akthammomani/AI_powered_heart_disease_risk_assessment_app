@@ -94,6 +94,40 @@ In data analysis, understanding the distribution of categorical features in rela
 The `BalancedRandomForestClassifier` from the `imbalanced-ensemble` library effectively handles class imbalance by using bootstrapped sampling to balance the dataset, ensuring robust classification of minority classes. It enhances model performance by focusing on underrepresented data, making it ideal for imbalanced datasets like heart disease prediction.
 
 
+### **Heart Disease vs Gender**
+
+![heart_disease_vs_gender](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/8f8c2858-d75a-4e46-ad15-4355b7a67322)
+
+**Distribution Analysis**
+
+* The majority of individuals with heart disease are male `15.5K`, followed by female `11.3K`.
+* There are very few nonbinary individuals with heart disease `15 individuals`.
+* The significant difference in the number of heart disease cases among males and females compared to nonbinary individuals highlights a noticeable imbalance.
+
+### **Heart Disease vs Race**
+
+![heart_disease_vs_race](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/50c3a545-6613-4ce5-810a-36d2408d019a)
+
+**Distribution Analysis**
+
+* The largest group with heart disease is "White Only, Non-Hispanic," with `22.2K` individuals.
+* Smaller groups, such as "Native Hawaiian or Other Pacific Islander Only, Non-Hispanic" and "Asian Only, Non-Hispanic," have very few individuals with heart disease (`100` and `300` individuals, respectively).
+* There is a notable imbalance in the number of heart disease cases across different racial categories, with significantly fewer cases in minority groups.
+
+### **Heart Disease vs General Health**
+
+![general_health](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/70b86a26-c021-4dc7-a5d1-77be326adbee)
+
+**Distribution Analysis**
+
+* The highest number of individuals with heart disease falls into the "Good" health category `8.9K`, followed by the "Fair" category `7.9K`.
+* Both "Very Good" and "Poor" health categories have the same number of individuals with heart disease `4.5K`.
+* The "Excellent" health category has the fewest individuals with heart disease `1.0K`.
+* There is a noticeable distribution of heart disease cases across different general health categories, with the highest incidence in individuals who self-report as having "Good" or "Fair" health.
+
+
+
+
 
 
 
