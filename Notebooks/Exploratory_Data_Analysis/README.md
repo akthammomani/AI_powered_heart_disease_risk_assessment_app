@@ -73,6 +73,28 @@ In pandas, the object data type is used for text or mixed data. When a column co
 * Performance Improvement: Operations on categorical data can be faster since pandas can make use of the underlying integer codes.
 * Explicit Semantics: Converting to category makes the data's categorical nature explicit, improving code readability and reducing the risk of treating categorical data as continuous.
 
+## **Analyzing categorical feature distributions against a target variable**
+
+In data analysis, understanding the distribution of categorical features in relation to a target variable is crucial for gaining insights into the data. One effective way to achieve this is by using horizontal stacked bar charts. These visualizations allow us to see how different categories of a feature are distributed across the levels of the target variable, providing a clear view of relationships and patterns within the data.
+
+### **Heart Disease: Target Variable**
+
+![heart_disease_distribution](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/2334384d-f63f-4de3-b005-b503f5793cd9)
+**Distribution Analysis**
+* There is a significant imbalance between the two categories.
+* A large majority of individuals do not have heart disease `418.3K`, while a much smaller number have heart disease `26.8K`.
+* This imbalance can be visually observed in the chart, where the green bar is substantially longer than the red bar.
+
+**Imbalance Issue**
+* Model Bias: When training a classification model on this imbalanced dataset, the model might become biased towards predicting the majority class (No heart disease) more frequently because it is seen more often in the training data.
+* Performance Metrics: Common performance metrics like accuracy can be misleading in imbalanced datasets. For instance, a model that always predicts "No heart disease" will have high accuracy because the majority class is well represented. However, this model would fail to correctly identify individuals with heart disease, which is critical for healthcare applications.
+* Recall and Precision: Metrics such as recall (sensitivity) and precision are more informative in this context. Recall measures the ability to identify true positive cases (heart disease), while precision measures the accuracy of positive predictions. In an imbalanced dataset, a model might have low recall for the minority class (heart disease) even if it has high accuracy overall.
+
+**Strategy to Address Imbalance**
+The `BalancedRandomForestClassifier` from the `imbalanced-ensemble` library effectively handles class imbalance by using bootstrapped sampling to balance the dataset, ensuring robust classification of minority classes. It enhances model performance by focusing on underrepresented data, making it ideal for imbalanced datasets like heart disease prediction.
+
+
+
 
 
 
