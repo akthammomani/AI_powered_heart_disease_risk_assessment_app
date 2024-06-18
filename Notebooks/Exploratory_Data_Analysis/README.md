@@ -336,6 +336,207 @@ The distribution highlights the importance of considering smoking history in ass
 * Very high consumption (more than 20 drinks) is the least common among those with heart disease, with `0.7K` individuals.
 * The distribution suggests that while many individuals with heart disease either do not drink or consume very little alcohol, moderate to high consumption is less common among this group. This emphasizes the importance of considering alcohol consumption habits in the context of heart disease risk and highlights the potential benefits of moderate or no alcohol consumption for heart health.
 
+## **Correlation: Heart Disease vs all features**
+
+In this analysis, we aim to understand the relationships between heart disease and various other features in our dataset. Specifically, we will be focusing on three main tasks:
+
+* Encoding Categorical Variables: Converting all categorical features into numerical values using CatBoost encoding. This step ensures that we can effectively use these features in our analysis. Process: convert all categorical features to numerical values using the `CatBoost encoder` from the `category_encoders` package. This encoding method handles categorical variables effectively, preserving their informational content.
+* Calculating Mutual Information: Assessing the predictive power of each feature with respect to heart disease by calculating the mutual information. Mutual information measures the dependency between the features and the target variable. Process: we calculate the mutual information for each feature with respect to heart disease. `Mutual information` provides a measure of the dependency between variables, allowing us to identify which features have the most predictive power.
+* Calculating Pearson Correlation: Generating a heatmap to visualize the Pearson correlation coefficients between heart disease and all other features. This helps us understand the linear relationships in the dataset, although it is less informative for a binary target. Process: we calculate the `Pearson correlation` coefficients between heart disease and all other features. We visualize these correlations using a heatmap, which helps us easily identify strong linear relationships in the dataset.
+
+### **Categorical Encoding with Catboost**
+
+Many machine learning algorithms require data to be numeric. Therefore, before training a model or calculating the correlation (Pearson) or mutual information (prediction power), we need to convert categorical data into numeric form. Various categorical encoding methods are available, and CatBoost is one of them. CatBoost is a target-based categorical encoder. It is a supervised encoder that encodes categorical columns according to the target value, supporting both binomial and continuous targets.
+
+Target encoding is a popular technique used for categorical encoding. It replaces a categorical feature with average value of target corresponding to that category in training dataset combined with the target probability over the entire dataset. But this introduces a target leakage since the target is used to predict the target. Such models tend to be overfitted and don’t generalize well in unseen circumstances.
+
+A CatBoost encoder is similar to target encoding, but also involves an ordering principle in order to overcome this problem of target leakage. It uses the principle similar to the time series data validation. The values of target statistic rely on the observed history, i.e, target probability for the current feature is calculated only from the rows (observations) before it.
+
+### **Mutual Information - Prediction Power**
+
+Mutual Information (MI) is a measure of the mutual dependence between two variables. It quantifies the amount of information obtained about one variable through another variable. Unlike correlation, which only captures linear relationships, mutual information can capture both linear and non-linear relationships between variables, making it a powerful tool for feature selection in machine learning.
+
+**Mutual Information key advanatages:** 
+
+* Captures Non-Linear Relationships: Unlike traditional correlation measures (e.g., Pearson), mutual information can capture complex, non-linear relationships between features and the target variable. This is particularly useful in real-world datasets where relationships are rarely purely linear.
+* Independence Detection: A mutual information score of zero indicates that two variables are completely independent. Non-zero mutual information indicates some level of dependency.
+* Predictive Power: Higher mutual information scores suggest that a feature contains more information about the target variable, indicating higher predictive power. This helps in identifying the most relevant features for building robust predictive models.
+
+#### **Interpretation of Mutual Information Scores**
+
+![mutual_info](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/c43f96f6-98d1-472d-9bad-9af81347e3f9)
+
+
+Mutual information measures the dependency between variables, capturing both linear and non-linear relationships. In this context, the mutual information score indicates how much information about the target variable heart_disease is provided by each feature. Higher scores imply stronger relationships between the feature and the target variable.
+
+**Top Features with High Mutual Information Scores**
+* could_not_afford_to_see_doctor (0.08):
+
+This feature has the highest mutual information score, suggesting that the inability to afford to see a doctor is the most informative feature for predicting heart disease. This indicates a significant association between financial barriers to healthcare and the likelihood of having heart disease.
+* ever_diagnosed_with_heart_attack (0.07):
+
+Being previously diagnosed with a heart attack is highly informative for predicting heart disease. This is expected, as a history of heart attacks is a strong indicator of ongoing heart health issues.
+* ever_diagnosed_with_a_stroke (0.07):
+
+Similarly, a history of strokes is another strong predictor of heart disease, suggesting that individuals with a history of stroke are more likely to have heart disease.
+* difficulty_walking_or_climbing_stairs (0.06):
+
+Difficulty in physical activities like walking or climbing stairs is closely related to heart disease, likely reflecting the physical limitations caused by heart health issues.
+* ever_told_you_have_kidney_disease (0.06):
+
+Kidney disease is significantly associated with heart disease, which aligns with the known comorbidities between cardiovascular and renal health issues.
+* sleep_category (0.06):
+
+Sleep patterns or quality of sleep also show a notable relationship with heart disease, potentially indicating that poor sleep may be a risk factor.
+* binge_drinking_status (0.06):
+
+Binge drinking is another informative feature, suggesting a relationship between alcohol consumption behaviors and heart disease risk.
+* ever_told_you_had_diabetes (0.06):
+
+Diabetes is a well-known risk factor for heart disease, and its high mutual information score reflects this strong association.
+* asthma_Status (0.05):
+
+The presence of asthma also provides information about the likelihood of having heart disease, possibly due to shared risk factors or comorbid conditions.
+
+**Features with Moderate Mutual Information Scores**
+* race (0.05), exercise_status_in_past_30_Days (0.05), length_of_time_since_last_routine_checkup (0.05):
+
+These features have moderate mutual information scores, indicating that they contribute useful but less substantial information about heart disease risk.
+* ever_told_you_had_a_depressive_disorder (0.04), smoking_status (0.04), general_health (0.04), physical_health_status (0.04):
+
+Mental health, smoking status, and general physical health also show meaningful associations with heart disease, reflecting the multifaceted nature of heart disease risk factors.
+
+**Features with Lower Mutual Information Scores**
+* gender (0.03), health_care_provider (0.03), age_category (0.03), mental_health_status (0.03), drinks_category (0.03), BMI (0.02):
+These features have lower mutual information scores, suggesting that while they do provide some information, their individual contributions to predicting heart disease are relatively smaller compared to the top features.
+
+**Summary**
+
+The mutual information scores provide a quantitative measure of how much each feature contributes to predicting heart disease. Features like financial barriers to healthcare, history of heart attacks or strokes, and physical limitations have the highest scores, highlighting their strong associations with heart disease. Understanding these relationships can help in prioritizing features for further analysis and in developing predictive models for heart disease.
+
+### **Pearson Correlation**
+
+Pearson correlation, also known as Pearson's r, is a measure of the linear relationship between two continuous variables. It quantifies the degree to which a pair of variables are linearly related. The Pearson correlation coefficient can take values between -1 and 1, where:
+
+* +1 indicates a perfect positive linear relationship.
+* -1 indicates a perfect negative linear relationship.
+* 0 indicates no linear relationship.
+
+#### **Collinearity Interpretation**
+
+![pearson_all_features](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/95b641af-014f-41de-8cc5-1e48da718a18)
+
+The heatmap displays the Pearson correlation coefficients between various features, focusing on identifying independent features that exhibit high collinearity with each other. Here are the key observations regarding collinearity:
+
+**High Collinearity**
+* General Health and Physical Health Status (0.53): There is a strong positive correlation between general health and physical health status. This suggests that these two features are closely related, with better general health strongly associated with better physical health status.
+* Difficulty Walking or Climbing Stairs and Physical Health Status (0.43): A strong positive correlation indicates that difficulty in physical activities is a significant component of overall physical health.
+* General Health and Difficulty Walking or Climbing Stairs (0.29): Moderate collinearity suggests that general health is significantly influenced by the ability to perform physical activities.
+* Ever Told You Had Diabetes and General Health (0.26): Moderate collinearity suggests that diabetes status is an important factor in overall general health.
+* Ever Told You Had Diabetes and Physical Health Status (0.26): Moderate collinearity indicates that diabetes has a considerable impact on physical health status.
+* Length of Time Since Last Routine Checkup and General Health (0.26): Moderate collinearity suggests that routine checkups are related to overall health monitoring.
+* General Health and Exercise Status in Past 30 Days (0.29): * Moderate collinearity suggests that exercise is an important factor in maintaining general health.
+
+**Moderate Collinearity**
+* Ever Diagnosed with Heart Attack and Ever Diagnosed with a Stroke (0.18): There is moderate collinearity, indicating that these conditions often occur together.
+* Ever Told You Had Diabetes and Ever Diagnosed with Heart Attack (0.20): Moderate collinearity indicates a common comorbidity with heart disease.
+* Ever Diagnosed with a Stroke and Ever Diagnosed with Heart Attack (0.18): Moderate collinearity indicating a common risk factor.
+* Ever Told You Have Kidney Disease and Ever Told You Had Diabetes (0.19): Moderate collinearity suggests common comorbidities.
+* Ever Diagnosed with Heart Attack and Ever Told You Had Kidney Disease (0.15): Moderate collinearity indicates a link between kidney disease and heart disease.
+* Health Care Provider and General Health (0.26): Moderate collinearity indicates a link between having a healthcare provider and general health.
+* Health Care Provider and Could Not Afford to See Doctor (0.16): Moderate collinearity suggests financial barriers to healthcare impact general health.
+* Smoking Status and Binge Drinking Status (0.11): Weak collinearity suggests some lifestyle factors are related.
+
+#### **Target Variable Interpretation**
+
+![target_vs_all_features_pearson](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/0338f597-42f1-42ea-a1ff-165cf17de5a1)
+
+The heatmap displays the Pearson correlation coefficients between various features and the target variable heart_disease. The values range from `-1` to `1`, where values closer to `1` indicate a strong positive linear correlation, values closer to `-1` indicate a strong negative linear correlation, and values around `0` indicate no linear correlation. Here are the key observations:
+
+**Strongest Positive Linear Correlations**
+* Ever Diagnosed with Heart Attack (0.43):
+Interpretation: This feature has the highest positive linear correlation with heart disease, indicating that individuals who have had a heart attack are significantly more likely to have heart disease. This is a strong relationship and aligns with medical knowledge that a history of heart attacks is a major risk factor for heart disease.
+
+**Moderate Positive Linear Correlations**
+* General Health (0.21):
+Interpretation: There is a moderate positive linear correlation between general health and heart disease. Poorer general health is associated with a higher likelihood of heart disease.
+* Age Category (0.21):
+Interpretation: Age category has a moderate positive linear correlation with heart disease, suggesting that older individuals are more likely to have heart disease.
+* Difficulty Walking or Climbing Stairs (0.17):
+Interpretation: This feature indicates that individuals who report difficulty with physical activities are more likely to have heart disease.
+* Ever Told You Had Diabetes (0.16):
+Interpretation: There is a moderate positive linear correlation, indicating that individuals with diabetes are more likely to have heart disease.
+* Ever Diagnosed with a Stroke (0.15):
+Interpretation: This feature has a moderate positive linear correlation with heart disease, suggesting that individuals who have had a stroke are also at higher risk for heart disease.
+* Ever Told You Have Kidney Disease (0.15):
+Interpretation: There is a moderate positive linear correlation, indicating a link between kidney disease and heart disease.
+* Physical Health Status (0.14):
+Interpretation: Individuals reporting poor physical health status are more likely to have heart disease.
+
+**Weak Positive Linear Correlations**
+* Health Care Provider (0.11):
+Interpretation: A weak positive linear correlation, suggesting some association between having a healthcare provider and heart disease, potentially due to increased diagnosis rates.
+* Smoking Status (0.08):
+Interpretation: There is a weak positive linear correlation between smoking and heart disease, reflecting the known risk of smoking for cardiovascular conditions.
+* Length of Time Since Last Routine Checkup (0.08):
+Interpretation: A weak positive linear correlation suggests that longer intervals between checkups are slightly associated with heart disease.
+* Exercise Status in Past 30 Days (0.08):
+Interpretation: A weak positive linear correlation indicating that less frequent exercise might be associated with heart disease.
+* Drinks Category (0.06):
+Interpretation: There is a weak positive linear correlation between drinking status and heart disease.
+* Sleep Category (0.05):
+Interpretation: There is a weak positive linear correlation between sleep category and heart disease, suggesting that poor sleep might be associated with heart disease.
+* Race (0.05):
+Interpretation: A weak positive linear correlation indicating a slight association between race and heart disease.
+* Binge Drinking Status (0.05):
+Interpretation: A weak positive linear correlation between binge drinking and heart disease.
+* Asthma Status (0.04):
+Interpretation: A weak positive linear correlation between asthma status and heart disease.
+* Gender (0.04):
+Interpretation: A weak positive linear correlation between gender and heart disease.
+* BMI (0.04):
+Interpretation: A weak positive linear correlation between BMI and heart disease.
+* Mental Health Status (0.04):
+Interpretation: A weak positive linear correlation between mental health status and heart disease.
+* Ever Told You Had a Depressive Disorder (0.03):
+Interpretation: A weak positive linear correlation suggesting a slight association between depression and heart disease.
+* Could Not Afford to See Doctor (0.00):
+Interpretation: This feature has a negligible linear correlation with heart disease, indicating that financial barriers to healthcare do not have a significant direct linear correlation with heart disease in this dataset.
+
+**Summary**
+The heatmap reveals that the strongest predictor of heart disease is a history of heart attacks, followed by general health, age category, and difficulty with physical activities. Other features show weaker linear correlations, suggesting they have a less direct but still notable relationship with heart disease. These insights can be useful for identifying risk factors and guiding further analysis and modeling efforts.
+
+
+### **Comparison Between Pearson Correlation and Mutual Information**
+
+**Comparison**
+* Linear Relationships: Pearson correlation is effective for identifying linear relationships. "Ever Diagnosed with Heart Attack" shows the highest linear correlation with heart disease, indicating a direct linear dependency.
+* Non-Linear Relationships: Mutual information captures both linear and non-linear dependencies. "Could Not Afford to See Doctor" shows the highest score, suggesting that financial barriers, although not strongly linearly correlated, have a significant impact on heart disease prediction.
+* Overlap: Some features like "Ever Diagnosed with Heart Attack" and "General Health" are significant in both Pearson correlation and mutual information, indicating their strong overall predictive power.
+* Unique Insights: Mutual information highlights features like "Could Not Afford to See Doctor" and "Sleep Category" that Pearson correlation does not emphasize, suggesting these features have non-linear relationships with heart disease.
+
+**Conclusion**
+* Pearson correlation is useful for identifying strong linear relationships but might miss non-linear dependencies.
+* Mutual information provides a more comprehensive view by capturing both linear and non-linear relationships, highlighting features that might not be evident with Pearson correlation alone.
+* Using both methods provides a holistic understanding of the relationships between independent features and the target variable, aiding in better feature selection for predictive modeling.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
