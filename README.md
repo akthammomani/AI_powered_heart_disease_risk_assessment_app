@@ -62,8 +62,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 
 To set up and run the AI-powered heart disease risk assessment app, follow these steps:
 
-### Step 1: Clone the Repository
-
+### Step 1: Clone the Repository:
 ```sh
 git clone https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app.git
 cd AI_powered_heart_disease_risk_assessment_app
