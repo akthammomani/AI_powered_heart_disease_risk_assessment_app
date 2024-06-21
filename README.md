@@ -23,6 +23,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 
 * Data Wrangling
 * Exploratory Data Analysis (EDA)
+* Data Visualization
 * Handling Imbalanced Classification
 * Feature Engineering and Encoding
 * Correlation Analysis
