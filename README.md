@@ -88,7 +88,7 @@ Install the required Python packages using pip:
 pip install -r requirements.txt
 ```
 
-### Step 4: Install Dependencies
+### Step 4: Run the Application
 
 To start the Streamlit application, run the following command:
 ```sh
