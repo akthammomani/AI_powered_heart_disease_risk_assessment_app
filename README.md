@@ -37,7 +37,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * **Pearson Correlation**: Used for measuring the linear relationship between features and the target variable, helping to identify the strength and direction of linear associations.
 * **Mutual Information**: Used for measuring both linear and non-linear relationships between features and the target variable, providing insights into the dependency and relevance of features.
 * **OPTUNA**: For hyperparameter tuning.
-* **imbalanced-ensemble library**: To effectively handles class imbalance by using bootstrapped sampling to balance the dataset.
+* **imbalanced-learn library**: To effectively handles class imbalance by using bootstrapped sampling to balance the dataset.
 * **Logistic Regression, Random Forest, LightGBM, XGBoost**: Classification models.
 
 ## **Features:**
