@@ -60,11 +60,40 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 
 ## **Installation**
 
-To use this project, first clone the repo on your device using the command below:
+To set up and run the AI-powered heart disease risk assessment app, follow these steps:
+
+### Step 1: Clone the Repository
 
 ```sh
-git init
 git clone https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app.git
+cd AI_powered_heart_disease_risk_assessment_app
+```
+### Step 2: Set Up a Virtual Environment
+
+Create and activate a virtual environment to manage dependencies:
+
+For Windows:
+```sh
+python -m venv venv
+venv\Scripts\activate
+```
+For macOS and Linux:
+```sh
+python3 -m venv venv
+source venv/bin/activate
+```
+### Step 3: Install Dependencies
+
+Install the required Python packages using pip:
+```sh
+pip install -r requirements.txt
+```
+
+### Step 4: Install Dependencies
+
+To start the Streamlit application, run the following command:
+```sh
+streamlit run app.py
 ```
 
 ## **Acknowledgments**
