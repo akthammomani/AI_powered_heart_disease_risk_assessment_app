@@ -94,10 +94,15 @@ To start the Streamlit application, run the following command:
 ```sh
 streamlit run app.py
 ```
+## **License**
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
 
 ## **Acknowledgments**
 
 Thank you to Professor Dallin for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
+
+
   
 
 
