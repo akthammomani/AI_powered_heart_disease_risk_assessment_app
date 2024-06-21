@@ -1,6 +1,4 @@
-# AI Powered Heart Disease Risk Assessment App
-
-This repository contains the notebooks and code for developing an AI-powered application to assess the risk of heart disease. The project includes data wrangling, exploratory data analysis (EDA), modeling, and deployment using Streamlit.
+This folder contains the notebooks and code for developing an AI-powered application to assess the risk of heart disease. The project includes data wrangling, exploratory data analysis (EDA), modeling, and deployment using Streamlit.
 
 ## Project Structure
 
