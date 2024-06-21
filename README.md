@@ -60,7 +60,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 
 ## **Acknowledgments**
 
-Thank you to Professor Dallin for your guidance and support throughout this project. Your insights have been greatly appreciated.
+Thank you to Professor Dallin for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
   
 
 
