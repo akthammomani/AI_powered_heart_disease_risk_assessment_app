@@ -43,6 +43,11 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * The dataset was sourced from Kaggle [(Behavioral Risk Factor Surveillance System (BRFSS) 2022)](https://www.kaggle.com/datasets/ariaxiong/behavioral-risk-factor-surveillance-system-2022/data) and it was originally downloaded from the [CDC BRFSS 2022 website.](https://www.cdc.gov/brfss/annual_data/annual_2022.html)
 * To get more understanding regarding the dataset, please go to the [data_directory](./data_directory) folder.
 
+## **Acknowledgments**
+
+Thank you to Professor Dallin for your guidance and support throughout this project. Your insights have been greatly appreciated.
+  
+
 
 
 
