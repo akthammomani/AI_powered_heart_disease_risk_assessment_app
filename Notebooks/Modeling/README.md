@@ -152,7 +152,16 @@ For a medical application such as heart disease prediction, these approaches ens
 
 ```python
 Best hyperparameters:
-  {'n_estimators': 10, 'learning_rate': 0.1, 'boosting_type': 'gbdt', 'num_leaves': 104, 'max_depth': 10, 'min_child_samples': 24, 'subsample': 0.8437808863271848, 'colsample_bytree': 0.8, 'reg_alpha': 0, 'reg_lambda': 0.6}
+  {'n_estimators': 10,
+'learning_rate': 0.1,
+'boosting_type': 'gbdt',
+'num_leaves': 104,
+'max_depth': 10,
+'min_child_samples': 24,
+'subsample': 0.8437808863271848,
+'colsample_bytree': 0.8,
+'reg_alpha': 0,
+'reg_lambda': 0.6}
 ```
 
 ## **Fitting Best Model - EasyEnsemble as a wrapper and LightGBM as a base estimator:**
