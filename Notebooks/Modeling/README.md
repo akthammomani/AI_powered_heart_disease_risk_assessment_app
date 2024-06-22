@@ -96,6 +96,46 @@ In pandas, the object data type is used for text or mixed data. When a column co
 **Strategy to Address Imbalance**
 The `BalancedRandomForestClassifier` or `BalancedBaggingClassifier` or `EasyEnsembleClassifier` from the `imbalanced-learn` library effectively handles class imbalance by using bootstrapped sampling to balance the dataset, ensuring robust classification of minority classes. It enhances model performance by focusing on underrepresented data, making it ideal for imbalanced datasets like heart disease prediction.
 
+## **Categorical Encoding with Catboost**
+
+Many machine learning algorithms require data to be numeric. Therefore, before training a model or calculating the correlation (Pearson) or mutual information (prediction power), we need to convert categorical data into numeric form. Various categorical encoding methods are available, and CatBoost is one of them. CatBoost is a target-based categorical encoder. It is a supervised encoder that encodes categorical columns according to the target value, supporting both binomial and continuous targets.
+
+Target encoding is a popular technique used for categorical encoding. It replaces a categorical feature with average value of target corresponding to that category in training dataset combined with the target probability over the entire dataset. But this introduces a target leakage since the target is used to predict the target. Such models tend to be overfitted and don’t generalize well in unseen circumstances.
+
+A CatBoost encoder is similar to target encoding, but also involves an ordering principle in order to overcome this problem of target leakage. It uses the principle similar to the time series data validation. The values of target statistic rely on the observed history, i.e, target probability for the current feature is calculated only from the rows (observations) before it.
+
+
+## **Baseline Modeling**
+
+Here, we will fit the the following models listed below and compare their performance both at the overall model level and at the class-specific level:
+
+* Logistic Regression
+* Random Forest
+* XGBoost
+* LightGBM
+* Balanced Bagging
+* Easy Ensemble
+* Balanced Random Forest	
+* Balanced Bagging (LightGBM): Balanced Bagging as a Wrapper and LightGBM as a base estimator
+* Easy Ensemble (LightGBM): Easy Ensemble as a Wrapper and LightGBM as a base estimator
+
+### **Class-specific level Metrics Comparison**
+
+![baseline_models](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/b3c2483d-1b55-48f7-abc4-72d0e3da7bd2)
+
+* **High Recall, Low Precision and F1 Score:**
+  * All models have high recall but low precision and F1 scores. This indicates that they are good at identifying positive cases (patients with heart disease) but also tend to predict a significant number of false positives (patients incorrectly identified as having heart disease).
+* **Balanced Bagging and Easy Ensemble:**
+  * These models are designed to handle class imbalance by balancing the classes during training. As a result, they have high recall, meaning they capture most of the actual positive cases. However, the trade-off is lower precision, which leads to a lower F1 score.
+In a medical context, high recall is crucial as it is important to identify as many true positive cases as possible, even at the cost of some false positives. Missing a true positive (false negative) could be more critical than having a false positive.
+* **Using LightGBM as Base Estimator:**
+  * When using LightGBM as the base estimator in Balanced Bagging and Easy Ensemble, the results show a similar pattern of high recall and low precision. However, these models have slightly better ROC AUC scores `(0.885894 and 0.885778, respectively)`, indicating a good balance between sensitivity and specificity.
+  * LightGBM is a powerful gradient boosting framework known for its efficiency and performance, which helps in achieving better overall performance metrics.
+  * When using Easy Ensemble as a wrapper and LightGBM as a base estimator, lightGBM **Recall has improved from `24.4% to 80.7%` and ROC AUC has improved from `88.4% to 88.6%` for class 1 (heart disease patients)**
+* **Practical Implications:** For a heart disease classification task, where identifying patients with heart disease (true positives) is critical, high recall is generally more desirable, even at the cost of having more false positives. This is because:
+  * High Recall: Ensures most patients with heart disease are identified, which is crucial for early intervention and treatment.
+  * False Positives: While not ideal, they can be managed through follow-up testing and further medical evaluation.
+
 
 
 
