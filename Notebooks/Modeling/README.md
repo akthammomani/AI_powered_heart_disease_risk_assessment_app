@@ -123,18 +123,30 @@ Here, we will fit the the following models listed below and compare their perfor
 
 ![baseline_models](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/b3c2483d-1b55-48f7-abc4-72d0e3da7bd2)
 
-* **High Recall, Low Precision and F1 Score:**
-  * All models have high recall but low precision and F1 scores. This indicates that they are good at identifying positive cases (patients with heart disease) but also tend to predict a significant number of false positives (patients incorrectly identified as having heart disease).
+* **High Recall, Low Precision and F1 Score:** The majority of models show poor recall for class 1 (patients with heart disease), except for Balanced Bagging, Easy Ensemble, Balanced Random Forest, and when these models are combined with LightGBM. This indicates that most models struggle to identify positive cases (patients with heart disease), resulting in a significant number of false negatives (patients incorrectly identified as not having heart disease).
 * **Balanced Bagging and Easy Ensemble:**
-  * These models are designed to handle class imbalance by balancing the classes during training. As a result, they have high recall, meaning they capture most of the actual positive cases. However, the trade-off is lower precision, which leads to a lower F1 score.
-In a medical context, high recall is crucial as it is important to identify as many true positive cases as possible, even at the cost of some false positives. Missing a true positive (false negative) could be more critical than having a false positive.
+  * Balanced Bagging and Easy Ensemble models, along with Balanced Random Forest, are designed to handle class imbalance by balancing the classes during training.
+  * Performance:
+    * They achieve higher recall for class 1, meaning they capture most of the actual positive cases.
+    * The trade-off is typically lower precision, leading to a lower F1 score.
+* **Medical Context Implication:** In a medical context, high recall is crucial as it is important to identify as many true positive cases as possible, even at the cost of some false positives. Missing a true positive (false negative) could be more critical than having a false positive.
 * **Using LightGBM as Base Estimator:**
-  * When using LightGBM as the base estimator in Balanced Bagging and Easy Ensemble, the results show a similar pattern of high recall and low precision. However, these models have slightly better ROC AUC scores `(0.885894 and 0.885778, respectively)`, indicating a good balance between sensitivity and specificity.
-  * LightGBM is a powerful gradient boosting framework known for its efficiency and performance, which helps in achieving better overall performance metrics.
-  * When using Easy Ensemble as a wrapper and LightGBM as a base estimator, lightGBM **Recall has improved from `24.4% to 80.7%` and ROC AUC has improved from `88.4% to 88.6%` for class 1 (heart disease patients)**
-* **Practical Implications:** For a heart disease classification task, where identifying patients with heart disease (true positives) is critical, high recall is generally more desirable, even at the cost of having more false positives. This is because:
-  * High Recall: Ensures most patients with heart disease are identified, which is crucial for early intervention and treatment.
-  * False Positives: While not ideal, they can be managed through follow-up testing and further medical evaluation.
+  * Performance with LightGBM:
+    * When using LightGBM as the base estimator in Balanced Bagging and Easy Ensemble, the results show improved recall for class 1.
+    * These models also have slightly better ROC AUC scores (0.885894 and 0.885778, respectively), indicating a good balance between sensitivity and specificity.
+    * LightGBM is a powerful gradient boosting framework known for its efficiency and performance, which helps in achieving better overall performance metrics.
+  * Improvement:
+    * When using Easy Ensemble as a wrapper and LightGBM as a base estimator, the Recall for class 1 (heart disease patients) improves significantly from 24.4% (in standalone LightGBM) to 80.7%.
+    * The ROC AUC improves from 88.4% to 88.6% for class 1, showing a better balance between correctly identifying true positives and minimizing false positives.
+* **Practical Implications:** Heart Disease Classification Task:
+  * Identifying patients with heart disease (true positives) is critical.
+  * High recall is generally more desirable, even at the cost of having more false positives.
+  * High Recall ensures most patients with heart disease are identified, which is crucial for early intervention and treatment.
+  * False Positives, while not ideal, can be managed through follow-up testing and further medical evaluation.
+* **Conclusion:**
+Balanced Bagging, Easy Ensemble, and Balanced Random Forest models, particularly with LightGBM as the base estimator, provide a good balance between identifying true positives and maintaining a reasonable rate of false positives.
+For a medical application such as heart disease prediction, these approaches ensure that most cases of heart disease are identified, enabling timely medical intervention, which is crucial for patient care.
+
 
 
 
