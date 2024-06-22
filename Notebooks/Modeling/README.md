@@ -148,6 +148,39 @@ Balanced Bagging, Easy Ensemble, and Balanced Random Forest models, particularly
 For a medical application such as heart disease prediction, these approaches ensure that most cases of heart disease are identified, enabling timely medical intervention, which is crucial for patient care.
 
 
+## **Fitting Best Model - EasyEnsemble as a wrapper and LightGBM as a base estimator:**
+
+![best_model](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/c1a8839e-cd87-47b0-88e3-18ba87ba9f47)
+
+* Class 0:
+  * The model has a high precision `(0.984788)` for class 0, indicating that when it predicts class 0, it is correct `98.48%` of the time.
+  * The recall for class 0 is also reasonably high `(0.785166)`, meaning it correctly identifies `78.52%` of all actual class 0 instances.
+  * The F1 score `(0.873720)` shows a good balance between precision and recall.
+  * The ROC AUC for class 0 is `0.785166`, indicating good discriminative ability.
+* Class 1:
+  * The precision for class 1 is low `(0.197094)`, meaning many of the predicted class 1 instances are actually class 0.
+  * However, the recall for class 1 is high `(0.813019)`, indicating the model is good at identifying actual class 1 instances.
+  * The F1 score for class 1 is relatively low `(0.317274)`, suggesting a trade-off between precision and recall.
+  * The ROC AUC for class 1 is the same as for class 0 `(0.883942)`, indicating overall good model performance in distinguishing between classes.
+    
+**Comparison to Separate and Combined Models:**
+* LightGBM Alone:
+  * LightGBM typically has strong performance due to its gradient boosting capabilities. It may achieve high accuracy and good precision/recall balances for both classes.
+  * However, LightGBM alone might struggle with class imbalance, often resulting in lower recall for minority classes (class 1: Recall `24.4%`).
+* EasyEnsemble Alone:
+  * EasyEnsemble without LightGBM as the base estimator focuses on balancing the data using under-sampling and creating multiple models.
+  * This approach improves recall for minority classes but might not achieve the high precision that LightGBM offers.
+  * The combined approach of using EasyEnsemble with LightGBM leverages the strengths of both techniques, enhancing both precision and recall, particularly for the minority class.
+* Combined (Tuned):
+  * When tuned, EasyEnsemble with LightGBM as the base estimator provides a balanced approach to handle class imbalance.
+  * The combined method shows improved recall for class 1 ` from `24.4% to 81.3%` while maintaining a good precision for class 0 `(0.984788)`.
+  * This combination also ensures that the model has a robust overall performance as indicated by the ROC AUC of `0.883942`.
+    
+**Conclusion:**
+
+Using EasyEnsemble with LightGBM as the base estimator, especially when hyperparameters are tuned, offers a comprehensive solution to handling class imbalance. It ensures high precision and recall for class 0 and significantly improves recall for class 1, although precision for class 1 remains a challenge. This combined approach outperforms using LightGBM or EasyEnsemble separately by effectively leveraging the strengths of both methods.
+
+
 
 
 
