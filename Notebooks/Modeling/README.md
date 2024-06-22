@@ -107,7 +107,7 @@ A CatBoost encoder is similar to target encoding, but also involves an ordering 
 
 ## **Baseline Modeling**
 
-Here, we will fit the the following models listed below and compare their performance both at the overall model level and at the class-specific level:
+Here, we will fit the the following models listed below and compare their performance at the class-specific level:
 
 * Logistic Regression
 * Random Forest
