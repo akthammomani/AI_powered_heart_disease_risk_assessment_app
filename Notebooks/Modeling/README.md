@@ -148,6 +148,13 @@ Balanced Bagging, Easy Ensemble, and Balanced Random Forest models, particularly
 For a medical application such as heart disease prediction, these approaches ensure that most cases of heart disease are identified, enabling timely medical intervention, which is crucial for patient care.
 
 
+## **Hyperparameter Tuning using Optuna**
+
+```python
+Best hyperparameters:
+  {'n_estimators': 10, 'learning_rate': 0.1, 'boosting_type': 'gbdt', 'num_leaves': 104, 'max_depth': 10, 'min_child_samples': 24, 'subsample': 0.8437808863271848, 'colsample_bytree': 0.8, 'reg_alpha': 0, 'reg_lambda': 0.6}
+```
+
 ## **Fitting Best Model - EasyEnsemble as a wrapper and LightGBM as a base estimator:**
 
 ![best_model](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/c1a8839e-cd87-47b0-88e3-18ba87ba9f47)
