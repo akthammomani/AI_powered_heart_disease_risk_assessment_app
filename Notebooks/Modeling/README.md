@@ -41,9 +41,9 @@ After several days of research and analysis of the dataset's features, we have i
 * **Target Variable (Dependent Variable):**
     * Heart_disease: "Ever_Diagnosed_with_Angina_or_Coronary_Heart_Disease"
 * **Demographics:**
-    * Gender: Are_you_male_or_female
-    * Race: Computed_race_groups_used_for_internet_prevalence_tables
-    * Age: Imputed_Age_value_collapsed_above_80
+    * Gender
+    * Race
+    * Age_category
 * **Medical History:**
     * General_Health
     * Have_Personal_Health_Care_Provider
@@ -54,21 +54,17 @@ After several days of research and analysis of the dataset's features, we have i
     * Ever_told_you_had_a_depressive_disorder
     * Ever_told_you_have_kidney_disease
     * Ever_told_you_had_diabetes
-    * Reported_Weight_in_Pounds
-    * Reported_Height_in_Feet_and_Inches
-    * Computed_body_mass_index_categories
+    * BMI
     * Difficulty_Walking_or_Climbing_Stairs
-    * Computed_Physical_Health_Status
-    * Computed_Mental_Health_Status
-    * Computed_Asthma_Status
+    * Physical_Health_Status
+    * Mental_Health_Status
+    * Asthma_Status
 * **Life Style:**
-    * Leisure_Time_Physical_Activity_Calculated_Variable
-    * Smoked_at_Least_100_Cigarettes
-    * Computed_Smoking_Status
-    * Binge_Drinking_Calculated_Variable
-    * Computed_number_of_drinks_of_alcohol_beverages_per_week
+    * Smoking_status
+    * Binge_Drinking_status
+    * Drinks_category
     * Exercise_in_Past_30_Days
-    * How_Much_Time_Do_You_Sleep
+    * Sleep_category
  
 ## **Converting Features Data Type**
 
