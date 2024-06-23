@@ -39,6 +39,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * **OPTUNA**: For hyperparameter tuning.
 * **imbalanced-learn library**: To effectively handles class imbalance by using bootstrapped sampling to balance the dataset.
 * **Logistic Regression, Random Forest, LightGBM, XGBoost**: Classification models.
+* **SHAP**: Features Importance.
 
 ## **Features:**
 
