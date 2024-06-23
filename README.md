@@ -41,6 +41,11 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * **Logistic Regression, Random Forest, LightGBM, XGBoost**: Classification models.
 * **SHAP**: Features Importance.
 
+## ** Repository Contents**: 
+* [Data Wrangling and Pre-Processing Code](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/tree/main/Notebooks/Data_wrangling_pre_processing)
+* [Exploratory Data Analysis (EDA) Code](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/tree/main/Notebooks/Exploratory_Data_Analysis)
+* [Modeling Code](https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/tree/main/Notebooks/Modeling)
+
 ## **Features:**
 
 * **Personalized Heart Disease Risk Assessment**: Evaluates individual risk factors specifically for heart disease.
