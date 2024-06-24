@@ -1,7 +1,7 @@
 # AI-Powered Heart Disease Risk Assessment App
 This project is a part of the Probability and Statistics for Artificial Intelligence (AAI-500) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
 
--- **Project Status: COMPLETED**
+-- **Project Status: Completed**
 
 ## **Introduction**:
 
