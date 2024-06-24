@@ -68,6 +68,14 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * The dataset was sourced from Kaggle [(Behavioral Risk Factor Surveillance System (BRFSS) 2022)](https://www.kaggle.com/datasets/ariaxiong/behavioral-risk-factor-surveillance-system-2022/data) and it was originally downloaded from the [CDC BRFSS 2022 website.](https://www.cdc.gov/brfss/annual_data/annual_2022.html)
 * To get more understanding regarding the dataset, please go to the [data_directory](./data_directory) folder.
 
+## **Future Work:**
+
+* **Enhanced Hyperparameter Tuning:** While initial hyperparameter tuning has been conducted, further experiments and refinements are planned to identify the optimal settings for the best model. Additional time will be dedicated to exploring a wider range of hyperparameters and employing advanced tuning techniques to enhance model performance.
+
+* **Classification Threshold Tuning:** To achieve a better balance between false positives and true positives, we will focus on tuning the classification thresholds. This will help in optimizing the trade-off between sensitivity and specificity, ensuring more accurate predictions.
+
+* **Feature Selection Improvements:** Further efforts will be made to refine the feature selection process. By carefully analyzing and selecting the most relevant features, we aim to improve the overall performance of the model. This includes experimenting with different feature selection techniques to enhance the predictive power of our app.
+
 ## **Installation**
 
 To set up and run the AI-powered heart disease risk assessment app, follow these steps:
