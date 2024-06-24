@@ -1,0 +1,7 @@
+streamlit==1.29.0
+pandas==1.5.3
+numpy==1.24.3
+pickleshare==0.7.5
+lightgbm==3.2.1
+category-encoders==2.3.0
+imbalanced-learn==0.12.3
