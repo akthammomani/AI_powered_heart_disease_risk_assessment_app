@@ -59,7 +59,7 @@ The AI-Powered Heart Disease Risk Assessment App aims to provide users with tail
 * **User Input**: Users input their health information, such as age, BMI, physical activity levels, smoking status, medical history (e.g., previous heart attacks, strokes, diabetes), etc.
 * **Data Analysis**: The app analyzes the input data using advanced AI models tailored for heart disease risk prediction.
 * **Risk Assessment**: Provides a personalized risk score for heart disease.
-* **Recommendations**: Offers actionable recommendations to mitigate the risk of heart disease, including lifestyle modifications and medical advice.
+* **Recommendations**: Offers actionable recommendations to mitigate the risk of heart disease, including lifestyle modifications.
 
 ## **Dataset:**
 
