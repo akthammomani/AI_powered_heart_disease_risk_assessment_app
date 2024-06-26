@@ -110,7 +110,7 @@ pip install -r requirements.txt
 
 To start the Streamlit application, run the following command:
 ```sh
-streamlit run app.py
+streamlit run heart_app.py
 ```
 ## **License**
 
