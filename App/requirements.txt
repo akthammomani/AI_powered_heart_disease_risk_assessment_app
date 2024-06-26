@@ -5,3 +5,4 @@ pickleshare==0.7.5
 lightgbm==3.2.1
 category-encoders==2.3.0
 imbalanced-learn==0.12.3
+SHAP==0.40.0
