@@ -176,7 +176,7 @@ if btn1:
             feature_importance_df = pd.DataFrame({
                 'Feature': input_encoded.columns,
                 'Importance': feature_importances
-            }).sort_values(by='Importance', ascending=True)
+            }).sort_values(by='Importance', ascending=False)
             recommendations = []
             if risk > 70:
                 recommendations.append("Your risk of heart disease is very high. Here are some recommendations to reduce your risk:")
