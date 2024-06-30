@@ -8,6 +8,7 @@ from lightgbm import LGBMClassifier
 import category_encoders as ce
 from imblearn.ensemble import EasyEnsembleClassifier
 import shap
+import plotly.express as px
 
 # Load the pickled model and encoder
 with open('best_model.pkl', 'rb') as model_file:
@@ -45,7 +46,7 @@ st.markdown("""
         <p>The AI-Powered Heart Disease Risk Assessment App provides users with tailored risk scores and actionable recommendations to help mitigate their heart disease risk. Using advanced AI and modeling techniques, this app offers easy-to-understand assessments and preventive measures to make safeguarding your cardiovascular health straightforward and accessible.</p>
     </div>
     <div class="flex-item how-it-works">
-        <h2>How it works:</h2>
+        <h2>How it works</h2>
         <ul>
             <li><strong>User Input:</strong> Enter your health information, such as age, BMI, physical activity levels, smoking status, and medical history (e.g., heart attacks, strokes, diabetes).</li>
             <li><strong>Data Analysis:</strong> The app analyzes your input using advanced AI models specifically designed for heart disease risk prediction.</li>
@@ -153,7 +154,7 @@ def predict_heart_disease_risk(input_data, model, encoder):
     return prediction
 
 st.write('---')
-row8_0, row8_1, row8_5 = st.columns((0.08, 12, 0.17))
+row8_0, row8_1, row8_2, row8_5 = st.columns((0.08, 7, 5, 0.27))
 
 with row8_1:
     st.write("#### AI Heart Disease Risk Assessment")
@@ -177,6 +178,7 @@ if btn1:
                 'Feature': input_encoded.columns,
                 'Importance': feature_importances
             }).sort_values(by='Importance', ascending=False)
+
             recommendations = []
             if risk > 70:
                 recommendations.append("Your risk of heart disease is very high. Here are some recommendations to reduce your risk:")
@@ -186,101 +188,184 @@ if btn1:
                 recommendations.append("Your risk of heart disease is moderate. Here are some recommendations to reduce your risk:")
             else:
                 recommendations.append("Your risk of heart disease is low. Keep up the good work and continue to maintain a healthy lifestyle.")
+
             if risk > 25:
                 cumulative_importance = 0
-                important_features = []
+                important_features = set()
                 for index, row in feature_importance_df.iterrows():
                     cumulative_importance += row['Importance']
-                    important_features.append(row['Feature'])
+                    important_features.add(row['Feature'])
                     if cumulative_importance >= 50:
                         break
-                #important_features are sorted in descending order by their importance
-                if 'ever_told_you_had_diabetes' not in important_features and diabetes == "yes":
-                    important_features.append('ever_told_you_had_diabetes')
-                if 'ever_diagnosed_with_heart_attack' not in important_features and heart_attack == "yes":
-                    important_features.append('ever_diagnosed_with_heart_attack')
-                if 'ever_told_you_had_a_depressive_disorder' not in important_features and depressive_disorder == "yes":
-                    important_features.append('ever_told_you_had_a_depressive_disorder')
-                if 'ever_diagnosed_with_a_stroke' not in important_features and stroke == "yes":
-                    important_features.append('ever_diagnosed_with_a_stroke')
-                if 'age_category' not in important_features and age_category in ["Age_55_to_59", "Age_60_to_64", "Age_65_to_69", "Age_70_to_74", "Age_75_to_79", "Age_80_or_older"]:
-                    important_features.append('age_category')
-                if 'length_of_time_since_last_routine_checkup' not in important_features and length_of_time_since_last_routine_checkup in ["Age_55_to_59", "Age_60_to_64", "Age_65_to_69", "Age_70_to_74", "Age_75_to_79", "Age_80_or_older"]:
-                    important_features.append('length_of_time_since_last_routine_checkup')
-                if 'general_health' not in important_features and general_health in ["fair", "poor"]:
-                    important_features.append('general_health')
-                if 'BMI' not in important_features and bmi in ["overweight_bmi_25_to_29_9", "obese_bmi_30_or_more"]:
-                    important_features.append('BMI')
-                if 'smoking_status' not in important_features and smoking_status != "never_smoked":
-                    important_features.append('smoking_status')
-                if 'exercise_status_in_past_30_Days' not in important_features and exercise_status == "no":
-                    important_features.append('exercise_status_in_past_30_Days')
-                if 'binge_drinking_status' not in important_features and binge_drinking_status == "yes":
-                    important_features.append('binge_drinking_status')
-                if 'drinks_category' not in important_features and drinks_category in ["high_consumption_10.01_to_20_drinks", "very_high_consumption_more_than_20_drinks"]:
-                    important_features.append('drinks_category')
-                if 'sleep_category' not in important_features and sleep_category in ["short_sleep_4_to_5_hours", "very_short_sleep_0_to_3_hours"]:
-                    important_features.append('sleep_category')
-                if 'physical_health_status' not in important_features and physical_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
-                    important_features.append('physical_health_status')
-                if 'mental_health_status' not in important_features and mental_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
-                    important_features.append('mental_health_status')
-                if 'asthma_Status' not in important_features and asthma in ["current_asthma", "former_asthma"]:
-                    important_features.append('asthma_Status')
-                if 'difficulty_walking_or_climbing_stairs' not in important_features and walking == "yes":
-                    important_features.append('difficulty_walking_or_climbing_stairs')
-                if 'length_of_time_since_last_routine_checkup' not in important_features and length_of_time_since_last_routine_checkup != "past_year":
-                    important_features.append('length_of_time_since_last_routine_checkup')
-                if 'could_not_afford_to_see_doctor' not in important_features and could_not_afford_to_see_doctor == "yes":
-                    important_features.append('could_not_afford_to_see_doctor')
-                if 'health_care_provider' not in important_features and health_care_provider == "no":
-                    important_features.append('health_care_provider')
-                if 'ever_told_you_have_kidney_disease' not in important_features and kidney_disease == "yes":
-                    important_features.append('ever_told_you_have_kidney_disease')
+                
+                # Ensure unique features are added only once
+                additional_features = [
+                    ('ever_told_you_had_diabetes', diabetes == "yes"),
+                    ('ever_diagnosed_with_heart_attack', heart_attack == "yes"),
+                    ('ever_told_you_had_a_depressive_disorder', depressive_disorder == "yes"),
+                    ('ever_diagnosed_with_a_stroke', stroke == "yes"),
+                    ('age_category', age_category in ["Age_55_to_59", "Age_60_to_64", "Age_65_to_69", "Age_70_to_74", "Age_75_to_79", "Age_80_or_older"]),
+                    ('length_of_time_since_last_routine_checkup', length_of_time_since_last_routine_checkup in ["Age_55_to_59", "Age_60_to_64", "Age_65_to_69", "Age_70_to_74", "Age_75_to_79", "Age_80_or_older"]),
+                    ('general_health', general_health in ["fair", "poor"]),
+                    ('BMI', bmi in ["overweight_bmi_25_to_29_9", "obese_bmi_30_or_more"]),
+                    ('smoking_status', smoking_status != "never_smoked"),
+                    ('exercise_status_in_past_30_Days', exercise_status == "no"),
+                    ('binge_drinking_status', binge_drinking_status == "yes"),
+                    ('drinks_category', drinks_category in ["high_consumption_10.01_to_20_drinks", "very_high_consumption_more_than_20_drinks"]),
+                    ('sleep_category', sleep_category in ["short_sleep_4_to_5_hours", "very_short_sleep_0_to_3_hours"]),
+                    ('physical_health_status', physical_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]),
+                    ('mental_health_status', mental_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]),
+                    ('asthma_Status', asthma in ["current_asthma", "former_asthma"]),
+                    ('difficulty_walking_or_climbing_stairs', walking == "yes"),
+                    ('length_of_time_since_last_routine_checkup', length_of_time_since_last_routine_checkup != "past_year"),
+                    ('could_not_afford_to_see_doctor', could_not_afford_to_see_doctor == "yes"),
+                    ('health_care_provider', health_care_provider == "no"),
+                    ('ever_told_you_have_kidney_disease', kidney_disease == "yes")
+                ]
+
+                for feature, condition in additional_features:
+                    if condition:
+                        important_features.add(feature)
+
+                # Mapping for feature names to user-friendly names
+                feature_name_mapping = {
+                    'ever_diagnosed_with_heart_attack': 'Heart Attack',
+                    'general_health': 'General Health',
+                    'ever_diagnosed_with_a_stroke': 'Stroke',
+                    'ever_told_you_have_kidney_disease': 'Kidney Disease',
+                    'ever_told_you_had_diabetes': 'Diabetes',
+                    'physical_health_status': 'Physical Health',
+                    'ever_told_you_had_a_depressive_disorder': 'Depression',
+                    'sleep_category': 'Sleep',
+                    'age_category': 'Age',
+                    'length_of_time_since_last_routine_checkup': 'Checkup Time',
+                    'BMI': 'BMI',
+                    'smoking_status': 'Smoking',
+                    'exercise_status_in_past_30_Days': 'Exercise',
+                    'binge_drinking_status': 'Binge Drinking',
+                    'drinks_category': 'Alcohol',
+                    'could_not_afford_to_see_doctor': 'Doctor Access',
+                    'health_care_provider': 'Healthcare Provider',
+                    'asthma_Status': 'Asthma',
+                    'difficulty_walking_or_climbing_stairs': 'Mobility',
+                    'mental_health_status': 'Mental Health',
+                }
+
+                # Ensure that the features with recommendations are included in the final features list
+                final_features = []
+                feature_to_recommendation = {}
                 for feature in important_features:
                     importance = feature_importance_df.loc[feature_importance_df['Feature'] == feature, 'Importance'].values[0]
                     if feature == 'ever_diagnosed_with_heart_attack' and heart_attack == "yes":
-                        recommendations.append(f"- History of heart attack contributed {importance:.2f}% to your risk. Regularly visit your cardiologist and adhere to prescribed medications. Monitor any new or worsening symptoms and seek immediate medical attention if needed.")
+                        recommendation = f"- History of heart attack contributed {importance:.2f}% to your risk. Regularly visit your cardiologist and adhere to prescribed medications. Monitor any new or worsening symptoms and seek immediate medical attention if needed."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'ever_diagnosed_with_a_stroke' and stroke == "yes":
-                        recommendations.append(f"- History of stroke contributed {importance:.2f}% to your risk. Follow your neurologist's recommendations and take prescribed medications consistently. Engage in approved physical therapy or exercises to regain strength and mobility.")
+                        recommendation = f"- History of stroke contributed {importance:.2f}% to your risk. Follow your neurologist's recommendations and take prescribed medications consistently. Engage in approved physical therapy or exercises to regain strength and mobility."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'age_category' and age_category in ["Age_55_to_59", "Age_60_to_64", "Age_65_to_69", "Age_70_to_74", "Age_75_to_79", "Age_80_or_older"]:
-                        recommendations.append(f"- Age category contributed {importance:.2f}% to your risk. While you can't change your age, maintaining a healthy lifestyle can mitigate risks associated with aging. Ensure regular check-ups, eat a balanced diet, stay active, and avoid smoking.")
+                        recommendation = f"- Age category contributed {importance:.2f}% to your risk. While you can't change your age, maintaining a healthy lifestyle can mitigate risks associated with aging. Ensure regular check-ups, eat a balanced diet, stay active, and avoid smoking."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'general_health' and general_health in ["fair", "poor"]:
-                        recommendations.append(f"- General health contributed {importance:.2f}% to your risk. Focus on improving your overall health through a balanced diet and regular check-ups.")
+                        recommendation = f"- General health contributed {importance:.2f}% to your risk. Focus on improving your overall health through a balanced diet and regular check-ups."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'ever_told_you_have_kidney_disease' and kidney_disease == "yes":
-                        recommendations.append(f"- Kidney disease contributed {importance:.2f}% to your risk. Regularly monitor your kidney function and follow your doctor's advice to manage your condition. Stay hydrated and maintain a kidney-friendly diet.")
+                        recommendation = f"- Kidney disease contributed {importance:.2f}% to your risk. Regularly monitor your kidney function and follow your doctor's advice to manage your condition. Stay hydrated and maintain a kidney-friendly diet."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'ever_told_you_had_diabetes' and diabetes == "yes":
-                        recommendations.append(f"- Diabetes contributed {importance:.2f}% to your risk. Manage your diabetes through diet, exercise, and medication as prescribed by your doctor.")
-                    if feature == 'BMI' and bmi in ["overweight_bmi_25_to_29_9", "obese_bmi_30_or_more"]:
-                        recommendations.append(f"- BMI contributed {importance:.2f}% to your risk. Maintain a healthy weight through diet and exercise.")
+                        recommendation = f"- Diabetes contributed {importance:.2f}% to your risk. Manage your diabetes through diet, exercise, and medication as prescribed by your doctor."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'smoking_status' and smoking_status != "never_smoked":
-                        recommendations.append(f"- Smoking status contributed {importance:.2f}% to your risk. Quit smoking to significantly reduce your risk of heart disease.")
+                        recommendation = f"- Smoking status contributed {importance:.2f}% to your risk. Quit smoking to significantly reduce your risk of heart disease."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'exercise_status_in_past_30_Days' and exercise_status == "no":
-                        recommendations.append(f"- Lack of exercise contributed {importance:.2f}% to your risk. Engage in regular physical activity to improve your heart health.")
-                    if feature == 'binge_drinking_status' and (binge_drinking_status == "yes" or drinks_category in ["high_consumption_10.01_to_20_drinks", "very_high_consumption_more_than_20_drinks"]):
-                        recommendations.append(f"- Alcohol consumption contributed {importance:.2f}% to your risk. Limit alcohol consumption to lower your risk.")
-                    if feature == 'sleep_category' and sleep_category in ["short_sleep_4_to_5_hours", "very_short_sleep_0_to_3_hours"]:
-                        recommendations.append(f"- Sleep category contributed {importance:.2f}% to your risk. Consider aiming for 7-9 hours of quality sleep each night. Adequate sleep is crucial for maintaining heart health.")
-                    if feature == 'physical_health_status' and physical_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
-                        recommendations.append(f"- Physical health contributed {importance:.2f}% to your risk. Engage in regular physical activity and consult a healthcare provider if you have persistent physical health issues.")
-                    if feature == 'mental_health_status' and mental_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
-                        recommendations.append(f"- Mental health contributed {importance:.2f}% to your risk. Consider seeking support from a mental health professional and practice stress-reducing activities.")
-                    if feature == 'asthma_Status' and asthma in ["current_asthma", "former_asthma"]:
-                        recommendations.append(f"- Asthma contributed {importance:.2f}% to your risk. Manage your asthma by following your treatment plan, avoiding asthma triggers, and using your medications as prescribed.")
-                    if feature == 'ever_told_you_had_a_depressive_disorder' and depressive_disorder == "yes":
-                        recommendations.append(f"- Depressive disorder contributed {importance:.2f}% to your risk. Consider seeking support from a mental health professional, practicing stress-reducing activities, and maintaining a healthy lifestyle to manage depressive symptoms.")
-                    if feature == 'difficulty_walking_or_climbing_stairs' and walking == "yes":
-                        recommendations.append(f"- Difficulty walking or climbing stairs contributed {importance:.2f}% to your risk. Consider consulting with a healthcare provider for appropriate interventions and exercises to improve mobility and strength.")
+                        recommendation = f"- Lack of exercise contributed {importance:.2f}% to your risk. Engage in regular physical activity to improve your heart health."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'binge_drinking_status' and binge_drinking_status == "yes":
-                        recommendations.append(f"- Binge drinking contributed {importance:.2f}% to your risk. Reducing or eliminating alcohol consumption can significantly lower your risk of heart disease. Consider seeking support for alcohol moderation or cessation if needed.")
+                        recommendation = f"- Binge drinking contributed {importance:.2f}% to your risk. Reducing or eliminating alcohol consumption can significantly lower your risk of heart disease. Consider seeking support for alcohol moderation or cessation if needed."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'drinks_category' and drinks_category in ["high_consumption_10.01_to_20_drinks", "very_high_consumption_more_than_20_drinks"]:
+                        recommendation = f"- Alcohol consumption contributed {importance:.2f}% to your risk. Limit alcohol consumption to lower your risk."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'sleep_category' and sleep_category in ["short_sleep_4_to_5_hours", "very_short_sleep_0_to_3_hours"]:
+                        recommendation = f"- Sleep category contributed {importance:.2f}% to your risk. Consider aiming for 7-9 hours of quality sleep each night. Adequate sleep is crucial for maintaining heart health."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'physical_health_status' and physical_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
+                        recommendation = f"- Physical health contributed {importance:.2f}% to your risk. Engage in regular physical activity and consult a healthcare provider if you have persistent physical health issues."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'mental_health_status' and mental_health in ["1_to_13_days_not_good", "14_plus_days_not_good"]:
+                        recommendation = f"- Mental health contributed {importance:.2f}% to your risk. Consider seeking support from a mental health professional and practice stress-reducing activities."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'asthma_Status' and asthma in ["current_asthma", "former_asthma"]:
+                        recommendation = f"- Asthma contributed {importance:.2f}% to your risk. Manage your asthma by following your treatment plan, avoiding asthma triggers, and using your medications as prescribed."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'ever_told_you_had_a_depressive_disorder' and depressive_disorder == "yes":
+                        recommendation = f"- Depressive disorder contributed {importance:.2f}% to your risk. Consider seeking support from a mental health professional, practicing stress-reducing activities, and maintaining a healthy lifestyle to manage depressive symptoms."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'difficulty_walking_or_climbing_stairs' and walking == "yes":
+                        recommendation = f"- Difficulty walking or climbing stairs contributed {importance:.2f}% to your risk. Consider consulting with a healthcare provider for appropriate interventions and exercises to improve mobility and strength."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'length_of_time_since_last_routine_checkup' and length_of_time_since_last_routine_checkup != "past_year":
-                        recommendations.append(f"- Time since last routine checkup contributed {importance:.2f}% to your risk. Regular health checkups are important for early detection and management of health conditions. Schedule regular appointments with your healthcare provider to monitor and maintain your heart health.")
+                        recommendation = f"- Time since last routine checkup contributed {importance:.2f}% to your risk. Regular health checkups are important for early detection and management of health conditions. Schedule regular appointments with your healthcare provider to monitor and maintain your heart health."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'could_not_afford_to_see_doctor' and could_not_afford_to_see_doctor == "yes":
-                        recommendations.append(f"- Difficulty affording to see a doctor contributed {importance:.2f}% to your risk. Explore community health services, sliding scale clinics, or health insurance options to ensure you have access to necessary medical care.")
+                        recommendation = f"- Difficulty affording to see a doctor contributed {importance:.2f}% to your risk. Explore community health services, sliding scale clinics, or health insurance options to ensure you have access to necessary medical care."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
                     if feature == 'health_care_provider' and health_care_provider == "no":
-                        recommendations.append(f"- Not having a primary health care provider contributed {importance:.2f}% to your risk. Establishing a relationship with a primary care provider can help manage and prevent health issues. Consider finding a primary health care provider to ensure regular check-ups and consistent medical advice.")
-            for recommendation in recommendations:
-                st.write(recommendation)
+                        recommendation = f"- Not having a primary health care provider contributed {importance:.2f}% to your risk. Establishing a relationship with a primary care provider can help manage and prevent health issues. Consider finding a primary health care provider to ensure regular check-ups and consistent medical advice."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)
+                    if feature == 'BMI' and bmi in ["overweight_bmi_25_to_29_9", "obese_bmi_30_or_more"]:
+                        recommendation = f"- BMI contributed {importance:.2f}% to your risk. Maintaining a healthy weight through a balanced diet and regular exercise can help reduce your risk of heart disease. Consider consulting a healthcare provider for personalized advice."
+                        feature_to_recommendation[feature] = recommendation
+                        final_features.append(feature)    
+
+                # Calculate the remaining contribution for "Other Factors"
+                total_importance = sum([feature_importance_df.loc[feature_importance_df['Feature'] == feature, 'Importance'].values[0] for feature in final_features])
+                other_factors_importance = 100 - total_importance
+
+                # Prepare data for the pie chart
+                pie_data = {
+                    'Feature': [feature_name_mapping[feature] for feature in final_features] + ['Other Factors'],
+                    'Importance': [feature_importance_df.loc[feature_importance_df['Feature'] == feature, 'Importance'].values[0] for feature in final_features] + [other_factors_importance]
+                }
+                pie_df = pd.DataFrame(pie_data)
+
+                # Create the pie chart
+                fig = px.pie(pie_df, names='Feature', values='Importance') #, title='Contribution to Heart Disease Risk'
+
+                # Display the pie chart
+                with row8_2:
+                    st.write("""
+                             #### Contribution to Heart Disease Risk
+                             #
+                             """)
+                    st.plotly_chart(fig)
+
+                # Display recommendations in sorted order
+                sorted_recommendations = sorted([(feature, feature_to_recommendation[feature]) for feature in final_features], key=lambda x: feature_importance_df.loc[feature_importance_df['Feature'] == x[0], 'Importance'].values[0], reverse=True)
+                for feature, recommendation in sorted_recommendations:
+                    st.write(recommendation)
+            else:
+                st.write("Your risk of heart disease is low. Keep up the good work and continue to maintain a healthy lifestyle.")
+
     except Exception as e:
         row8_1.error(e)
 
