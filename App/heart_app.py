@@ -355,7 +355,6 @@ if btn1:
                 with row8_2:
                     st.write("""
                              #### Contribution to Heart Disease Risk
-                             #
                              """)
                     st.plotly_chart(fig)
 
