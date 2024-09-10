@@ -828,6 +828,42 @@ for name, model in models.items():
 metrics_df
 
 
+#####################
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from lightgbm import LGBMClassifier
+
+# Assuming X_train and y_train are already defined
+# Fit the LGBMClassifier model
+lgbm_model = LGBMClassifier(n_jobs=-1, random_state=1981)
+lgbm_model.fit(X_train, y_train)
+
+# Get feature importances
+feature_importances = lgbm_model.feature_importances_
+
+# Create a DataFrame for better visualization
+feature_names = X_train.columns  # Assuming X_train is a DataFrame, otherwise adjust accordingly
+importance_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Importance': feature_importances
+})
+
+# Sort the DataFrame by importance for better visualization
+importance_df = importance_df.sort_values(by='Importance', ascending=False)
+
+# Plot the feature importance
+plt.figure(figsize=(10, 6))
+plt.barh(importance_df['Feature'], importance_df['Importance'])
+plt.xlabel('Importance')
+plt.ylabel('Feature')
+plt.title('Feature Importance from LGBMClassifier')
+plt.gca().invert_yaxis()  # To display the most important feature at the top
+plt.show()
+
+
+
 
 
 
