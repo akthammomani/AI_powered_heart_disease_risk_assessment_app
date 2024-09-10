@@ -743,7 +743,90 @@ pickle.dump(cbe_encoder, pickle_out)
 pickle_out.close()
 
 
-# In[ ]:
+#33333333333333333333333333333
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from lightgbm import LGBMClassifier
+from xgboost import XGBClassifier
+from imblearn.ensemble import BalancedBaggingClassifier, EasyEnsembleClassifier, BalancedRandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+import pandas as pd
+
+# Initialize models with class weighting and ensemble methods
+models = {
+    'Logistic Regression': LogisticRegression(random_state=1981, class_weight='balanced'),
+    'Random Forest': RandomForestClassifier(n_jobs=-1, random_state=1981, class_weight='balanced'),
+    'LightGBM': LGBMClassifier(n_jobs=-1, random_state=1981, class_weight='balanced'),
+    'XGBoost': XGBClassifier(n_jobs=-1, random_state=1981, use_label_encoder=False, eval_metric='logloss', scale_pos_weight=1),
+    'Balanced Bagging': BalancedBaggingClassifier(random_state=1981),
+    'Easy Ensemble': EasyEnsembleClassifier(random_state=1981),
+    'Balanced Random Forest': BalancedRandomForestClassifier(random_state=1981),
+    'Balanced Bagging (LightGBM)': BalancedBaggingClassifier(estimator=LGBMClassifier(n_jobs=-1, random_state=1981), random_state=1981),
+    'Easy Ensemble (LightGBM)': EasyEnsembleClassifier(estimator=LGBMClassifier(n_jobs=-1, random_state=1981), random_state=1981)
+}
+
+# Create a DataFrame to store metrics
+metrics_df = pd.DataFrame()
+
+# Train and evaluate models
+for name, model in models.items():
+    if name == 'Logistic Regression':
+        model.fit(X_train_scaled, y_train)
+        y_pred = model.predict(X_test_scaled)
+        y_pred_proba = model.predict_proba(X_test_scaled)
+    else:
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        y_pred_proba = model.predict_proba(X_test)
+        
+    # Class-specific metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, average=None)
+    recall = recall_score(y_test, y_pred, average=None)
+    f1 = f1_score(y_test, y_pred, average=None)
+    
+    # Weighted and Macro averages
+    precision_weighted = precision_score(y_test, y_pred, average='weighted')
+    recall_weighted = recall_score(y_test, y_pred, average='weighted')
+    f1_weighted = f1_score(y_test, y_pred, average='weighted')
+
+    precision_macro = precision_score(y_test, y_pred, average='macro')
+    recall_macro = recall_score(y_test, y_pred, average='macro')
+    f1_macro = f1_score(y_test, y_pred, average='macro')
+
+    # ROC AUC (macro)
+    roc_auc_macro = roc_auc_score(y_test, y_pred_proba, multi_class='ovr', average='macro')
+    
+    # Append class-specific metrics
+    model_metrics = pd.DataFrame({
+        'Model': [name] * len(precision),
+        'Class': list(range(len(precision))),
+        'Accuracy': [accuracy] * len(precision),
+        'Precision': precision,
+        'Recall': recall,
+        'F1 Score': f1,
+        'ROC AUC': [roc_auc_macro] * len(precision)  # ROC AUC is macro for multi-class
+    })
+    
+    metrics_df = pd.concat([metrics_df, model_metrics], ignore_index=True)
+    
+    # Append weighted and macro averages
+    avg_metrics = pd.DataFrame({
+        'Model': [name] * 2,
+        'Class': ['Weighted Avg', 'Macro Avg'],
+        'Accuracy': [accuracy] * 2,
+        'Precision': [precision_weighted, precision_macro],
+        'Recall': [recall_weighted, recall_macro],
+        'F1 Score': [f1_weighted, f1_macro],
+        'ROC AUC': [roc_auc_macro] * 2  # ROC AUC is only macro here
+    })
+    
+    metrics_df = pd.concat([metrics_df, avg_metrics], ignore_index=True)
+
+# Display the metrics DataFrame
+metrics_df
+
 
 
 
