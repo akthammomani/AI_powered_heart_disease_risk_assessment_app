@@ -891,6 +891,9 @@ def clean_city_state(city_state):
     # Remove directional words
     city_state = re.sub(r'\b(North|South|East|West)\b', '', city_state, flags=re.IGNORECASE).strip()
 
+
+    
+
     # If there's no state abbreviation, assume TX
     if not re.search(r',\s*[A-Z]{2}', city_state):
         city_state += ", TX"
@@ -909,6 +912,39 @@ df_cleaned = df.withColumn("cleaned_city_state", clean_city_state_udf(col("city_
 
 # Show the results
 df_cleaned.show(truncate=False)
+
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import when, col, max
+
+def clean_city_state_column(df, city_state_col):
+    """
+    Cleans the city-state column by filling in missing state information where another row has the same city with the state.
+
+    Parameters:
+    df (DataFrame): The PySpark DataFrame containing city and state data.
+    city_state_col (str): The name of the column containing the city and state information.
+
+    Returns:
+    DataFrame: A new DataFrame with the cleaned city and state column.
+    """
+    # Step 1: Extract the city and state into separate columns for easier processing
+    df = df.withColumn("city", when(col(city_state_col).like("%, %"), col(city_state_col).substr(1, col(city_state_col).instr(",")-1))
+                                  .otherwise(col(city_state_col))) \
+           .withColumn("state", when(col(city_state_col).like("%, %"), col(city_state_col).substr(col(city_state_col).instr(",")+2, 100)))
+
+    # Step 2: Group by city and find the non-null state (max to capture non-null states where present)
+    df_with_state = df.groupBy("city").agg(max("state").alias("state"))
+
+    # Step 3: Join the original DataFrame with the DataFrame containing non-null states
+    df_filled = df.join(df_with_state, on="city", how="left")
+
+    # Step 4: Fill the missing state information
+    df_filled = df_filled.withColumn("cleaned_city_state", when(col("state").isNotNull(), col("city") + ", " + col("state"))
+                                                         .otherwise(col(city_state_col)))
+
+    # Return the DataFrame with the cleaned city-state column
+    return df_filled.select("*", "cleaned_city_state")
 
 
 
