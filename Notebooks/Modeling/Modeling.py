@@ -863,6 +863,55 @@ plt.gca().invert_yaxis()  # To display the most important feature at the top
 plt.show()
 
 
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import udf, col
+from pyspark.sql.types import StringType
+import re
+
+# Initialize Spark Session
+spark = SparkSession.builder.appName("CityStateCleanup").getOrCreate()
+
+# Sample DataFrame
+data = [
+    ("Houston, TX",),
+    ("Houston",),
+    ("North Houston, TX",),
+    ("East Houston",)
+]
+columns = ["city_state"]
+
+df = spark.createDataFrame(data, columns)
+
+# Define a function to clean up city and state
+def clean_city_state(city_state):
+    # Standardize state abbreviations, assuming TX if missing
+    if city_state is None:
+        return "Unknown, TX"
+    
+    # Remove directional words
+    city_state = re.sub(r'\b(North|South|East|West)\b', '', city_state, flags=re.IGNORECASE).strip()
+
+    # If there's no state abbreviation, assume TX
+    if not re.search(r',\s*[A-Z]{2}', city_state):
+        city_state += ", TX"
+    
+    # Clean up any extra spaces or commas
+    city_state = re.sub(r'\s+', ' ', city_state)  # Remove multiple spaces
+    city_state = re.sub(r',\s+', ', ', city_state)  # Format space after comma
+
+    return city_state.strip()
+
+# Register the function as a UDF
+clean_city_state_udf = udf(clean_city_state, StringType())
+
+# Apply the UDF to the DataFrame
+df_cleaned = df.withColumn("cleaned_city_state", clean_city_state_udf(col("city_state")))
+
+# Show the results
+df_cleaned.show(truncate=False)
+
+
+
 
 
 
